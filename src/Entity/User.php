@@ -55,6 +55,12 @@ class User implements UserInterface
      */
     private $taille;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Sexe", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $sexe;
+
 
     public function getId(): ?int
     {
@@ -178,6 +184,18 @@ class User implements UserInterface
     public function setTaille(int $taille): self
     {
         $this->taille = $taille;
+
+        return $this;
+    }
+
+    public function getSexe(): ?Sexe
+    {
+        return $this->sexe;
+    }
+
+    public function setSexe(Sexe $sexe): self
+    {
+        $this->sexe = $sexe;
 
         return $this;
     }

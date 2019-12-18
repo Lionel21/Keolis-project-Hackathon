@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Sexe;
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -31,9 +33,14 @@ class RegistrationFormType extends AbstractType
             ->add('age', NumberType::class, [
                 'label' => 'Age'
             ])
+            ->add('sexe', EntityType::class, [
+                'class' => Sexe::class,
+                'choice_label' => 'name',
+            ])
             ->add('taille', NumberType::class, [
                 'label' => 'Taille'
             ])
+
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Veuillez entrer le même mot de passe.',
