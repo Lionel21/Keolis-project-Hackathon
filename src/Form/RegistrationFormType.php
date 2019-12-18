@@ -30,17 +30,6 @@ class RegistrationFormType extends AbstractType
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom'
             ])
-            ->add('age', NumberType::class, [
-                'label' => 'Age'
-            ])
-            ->add('sexe', EntityType::class, [
-                'class' => Sexe::class,
-                'choice_label' => 'name',
-            ])
-            ->add('taille', NumberType::class, [
-                'label' => 'Taille'
-            ])
-
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Veuillez entrer le même mot de passe.',

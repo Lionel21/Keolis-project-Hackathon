@@ -46,20 +46,15 @@ class User implements UserInterface
     private $firstname;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $age;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $taille;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Sexe", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $sexe;
 
 
     public function getId(): ?int
@@ -169,7 +164,7 @@ class User implements UserInterface
         return $this->age;
     }
 
-    public function setAge(int $age): self
+    public function setAge(?int $age): self
     {
         $this->age = $age;
 
@@ -181,23 +176,13 @@ class User implements UserInterface
         return $this->taille;
     }
 
-    public function setTaille(int $taille): self
+    public function setTaille(?int $taille): self
     {
         $this->taille = $taille;
 
         return $this;
     }
 
-    public function getSexe(): ?Sexe
-    {
-        return $this->sexe;
-    }
 
-    public function setSexe(Sexe $sexe): self
-    {
-        $this->sexe = $sexe;
-
-        return $this;
-    }
 
 }

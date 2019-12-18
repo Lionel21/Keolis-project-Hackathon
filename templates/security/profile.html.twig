@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-fluid">
+        <h1>Bienvenue sur votre profil {{ app.user.lastname }} {{ app.user.firstname }}</h1>
+        <h3>Vos informations </h3>
+        <p>Email: {{ app.user.email }}</p>
+        <p>Age : {{ app.user.age }}</p>
+        <p>Taille : {{ app.user.taille }}</p>
+        <a class="btn btn-dark" href="{{ path('home_index') }}">Retour</a>
+        <a class="btn btn-dark" href="{{ path('home_index') }}">Modifer</a>
+
+    </div>
+{% endblock %}
