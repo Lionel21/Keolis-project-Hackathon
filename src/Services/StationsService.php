@@ -14,7 +14,7 @@ class StationsService
         $content = $response->toArray();
 
         foreach ($content['records'] as $station) {
-            $stations = $content['records'];
+            $stations[$station['fields']['nomstation']] = [$station['fields']['latitude'], $station['fields']['longitude']];
         }
 
         return $stations;

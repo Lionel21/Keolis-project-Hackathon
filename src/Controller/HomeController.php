@@ -17,8 +17,6 @@ class HomeController extends AbstractController
 
         $stations = $stationsService->getStations();
 
-        var_dump($stations);
-        die();
         return $this->render('/home/index.html.twig', [
             'stations' => $stations,
         ]);
