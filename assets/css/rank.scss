@@ -1,9 +1,4 @@
-.titleRank{
-  color:#73be31;
-  text-align: center;
-}
-
-.page-historic{
+.page-rank{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,14 +10,15 @@
   color: rgba(48, 69, 92, 0.8);
   background-color: #fefffa;
 }
-.resize-page-historic{
+
+.resize-page-rank{
   display: flex;
   flex-direction: column;
   width: 90%;
   height: 100%;
 }
 
-.container-historic{
+.container-rank{
   display:flex;
   flex-direction:row;
   justify-content: center;
@@ -31,7 +27,7 @@
   border-bottom: #73be31 solid 1px;
 }
 
-.h1-historic{
+.h1-rank{
   text-transform: uppercase;
   font-size: 36px;
   line-height: 42px;
@@ -40,27 +36,34 @@
   margin-top:5vh;
   margin-bottom:5vh;
   color: #73be31;
+  text-align: center;
 }
 
-.infos-historic{
+.infos-rank{
   display: flex;
   flex-direction: row;
   font-size:20px;
   margin-left:3vw;
 }
 
-.infos-div-historic{
+.infos-div-rank{
   display:flex;
   flex-direction:column;
   align-items:center;
   margin-left:4vw;
 }
 
-.title-infos-historic{
+.title-infos-rank{
   font-size:18px;
   margin-bottom:1vh;
 }
 
-.result-infos-historic{
+.title-infos-rank-bold{
+  font-size:18px;
+  margin-bottom:1vh;
+  font-weight: bold;
+}
+
+.result-infos-rank{
   font-size:14px;
 }

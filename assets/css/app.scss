@@ -5,6 +5,21 @@
 @import "rank.scss";
 @import "historic.scss";
 
+$font-title : bellotaregular;
+
+
+@font-face {
+  font-family: bellotaregular;
+  src: url('../font/Bellota-Bold.otf');
+  src: url('../font/Bellota-BoldItalic.otf'),
+  url('../font/Bellota-Italic.otf'),
+  url('../font/Bellota-Light.otf') ,
+  url('../font/Bellota-LightItalic.otf'),
+  url('../font/Bellota-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 #map {
     width: 100vw;
     height: 80vh;
