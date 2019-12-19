@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{travel.id}}</h5>
+            <p class="card-text">nom {{ travel.user.lastname }}</p>
+            <p class="card-text">prénom {{ travel.user.firstname }}</p>
+            <p class="card-text">age {{ travel.user.age }}</p>
+            <p class="card-text">poids {{ travel.user.weight }}</p>
+            <p class="card-text">distance {{ travel.distance }}</p>
+            <p class="card-text">durée {{ travel.duration}}</p>
+            <p class="card-text">kcal {{ travel.calory}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+
+{% endblock %}

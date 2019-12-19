@@ -1,72 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-    {% if app.user %}
-        {{ app.user.firstname }}
-        <a href="{{ path('app_logout') }}">Se déconnecter</a>
-        <a href="{{ path('app_profile') }}">Mon profil</a>
-    {% else %}
-        <a href="{{ path('app_login') }}"> Se connecter</a>
-        <a href="{{ path('app_register') }}">Créer un compte</a>
-    {% endif %}
 
-<div class="js-stations" data-stations="{{ stations|json_encode|e('html_attr') }}">
-</div>
-<div class="d-flex justify-content-center">
-    <div class="mt-5 mb-5" id="map"></div>
-</div>
+    <div class="d-flex justify-content-center">
+        <div class="mt-5 mb-5" id="map"></div>
+    </div>
+    <div class="js-stations" data-stations="{{ stations|json_encode|e('html_attr') }}">
+    </div>
 
-<nav class="navbar fixed-bottom">
-
-    <a class="navbar-brand" href="#">
-        <div class="iconFlex">
-            <i class="fas fa-home fa-2x"></i>
-            <div>
-                <p class="titleNav">Accueil</p>
-            </div>
-        </div>
-    </a>
-
-    <a class="navbar-brand" href="#">
-        <div class="iconFlex">
-            <i class="fas fa-euro-sign fa-2x"></i>
-            <div>
-                <p class="titleNav">Tarifs</p>
-            </div>
-        </div>
-    </a>
-
-    <a class="navbar-brand" href="#">
-        <div class="iconFlex">
-            <i class="fas fa-biking fa-2x"></i>
-            <div>
-                <p class="titleNav">Disponibilités</p>
-            </div>
-        </div>
-    </a>
-
-    <a class="navbar-brand" href="#">
-        <div class="iconFlex">
-            <i class="fas fa-trophy fa-2x"></i>
-            <div>
-                <p class="titleNav">Rang</p>
-            </div>
-        </div>
-    </a>
-
-    <a class="navbar-brand" href="#">
-        <div class="iconFlex">
-            <i class="fas fa-users fa-2x"></i>
-            <div>
-                <p class="titleNav">Profil</p>
-            </div>
-        </div>
-    </a>
-
-</nav>
-
-
-
+    <div class="mb-5 travel">
+        {{ include('travel/_form.html.twig') }}
+    </div>
 {% endblock %}

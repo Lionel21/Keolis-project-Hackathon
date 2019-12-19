@@ -1,0 +1,60 @@
+
+
+<nav class="navbar fixed-bottom">
+
+    <a class="navbar-brand" href="{{ path('home_index') }}">
+        <div class="iconFlex">
+            <i class="fas fa-home fa-1x"></i>
+            <div class="sizeNav">
+                <p class="titleNav">Accueil</p>
+            </div>
+        </div>
+    </a>
+
+    <a class="navbar-brand" href="{{ path('tarifs_index') }}">
+        <div class="iconFlex">
+            <i class="fas fa-euro-sign fa-1x"></i>
+            <div class="sizeNav">
+                <p class="titleNav">Tarifs</p>
+            </div>
+        </div>
+    </a>
+
+    <a class="navbar-brand" href="#">
+        <div class="iconFlex">
+            <i class="fas fa-history fa-1x"></i>
+            <div class="sizeNav">
+                <p class="titleNav">Historique</p>
+            </div>
+        </div>
+    </a>
+
+    <a class="navbar-brand" href="{{ path('user_index') }}">
+        <div class="iconFlex">
+            <i class="fas fa-trophy fa-1x"></i>
+            <div class="sizeNav">
+                <p class="titleNav">Classement</p>
+            </div>
+        </div>
+    </a>
+    {% if app.user %}
+    <a class="navbar-brand" href="{{ path('app_profile') }}">
+        <div class="iconFlex">
+            <i class="fas fa-users fa-1x"></i>
+            <div>
+                <p class="titleNav">Profil</p>
+            </div>
+        </div>
+    </a>
+{% else %}
+    <a class="navbar-brand" href="{{ path('app_login') }}">
+        <div class="iconFlex">
+            <i class="fas fa-users fa-1x"></i>
+            <div>
+                <p class="titleNav">Profil</p>
+            </div>
+        </div>
+    </a>
+    {% endif %}>
+
+</nav>

@@ -1,4 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
+@import "profile";
 @import "navbar.scss";
 @import "tarifs.scss";
 @import "historic.scss";
@@ -6,4 +7,13 @@
 #map {
     width: 100vw;
     height: 80vh;
+}
+
+#mapRoad {
+    width: 100vw;
+    height: 80vh;
+}
+
+.travel {
+    height: 40vh;
 }
