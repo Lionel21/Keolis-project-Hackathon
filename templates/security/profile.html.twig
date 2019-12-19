@@ -1,13 +1,20 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container-fluid">
-        <h1>Bienvenue sur votre profil {{ app.user.lastname }} {{ app.user.firstname }}</h1>
-        <h3>Vos informations </h3>
-        <p>Email: {{ app.user.email }}</p>
-        <p>Age : {{ app.user.age }}</p>
-        <p>Taille : {{ app.user.taille }}</p>
-        <a class="btn btn-dark" href="{{ path('home_index') }}">Retour</a>
-        <a class="btn btn-dark" href="{{ path('home_index') }}">Modifer</a>
-
+        <div id="container">
+            <div id="hero-img"></div>
+            <div id="profile-img">
+                <img src="http://emilcarlsson.se/assets/profile.png" alt=""/>
+            </div>
+            <div id="content">
+                <h1>{{ app.user.lastname }} {{ app.user.firstname }}</h1>
+                <div class="row">
+                <p class="col-6">{{ app.user.age }} ans </p>
+                <p class="col-6">{{ app.user.weight }} kg </p>
+                </div>
+                <p>{{ app.user.taille }} cm </p>
+                <a class="btn btn-dark" href="{{ path('user_edit', {'id': app.user.id}) }}">Modifer</a>
+            </div>
+        </div>
     </div>
 {% endblock %}
