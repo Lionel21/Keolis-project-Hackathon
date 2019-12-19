@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="page-tarif">
+        <div class="resize-page-tarif">
+            <h1 class="h1-tarif">Les Tarifs</h1>
+            <p class="description-tarif">
+                360 vélos répartis sur 34 stations et disponibles 24h/24 et 7j/7. Ce vélo en libre-service permet
+                d'effectuer
+                des trajets de courte distance (les 30 premières minutes sont gratuites).</br>
+                Le principe est simple, vous empruntez un vélo dans la station de votre choix et le déposez dans
+                n'importe
+                quelle autre, selon le parcours que vous voulez effectuer. Les abonnés Tao bénéficient d'un tarif plus
+                attractif.</br>
+                La caution est de 400 € pour chacune des formules d’abonnement.
+            </p>
+            <ul class="ul-tarif">
+                <li>
+                    <input type="checkbox" checked>
+                    <i></i>
+                    <h2 class="h2-tarif">Abonnement à la journée</h2>
+                    <p class="input-tarifs">
+                        <a class="tarif">Frais d'entrée : 1€</a>
+                        <a class="tarif">1ère demi-heure : Gratuit</a>
+                        <a class="tarif">2ème demi-heure : 0,51€</a>
+                        <a class="tarif">2ème heure : 1,02€</a>
+                        <a class="tarif">Chaque heure suivante : 2.04€</a>
+                    </p>
+                </li>
+                <li>
+                    <input type="checkbox" checked>
+                    <i></i>
+                    <h2 class="h2-tarif">Abonnement à la semaine</h2>
+                    <p class="input-tarifs">
+                        <a class="tarif">Frais d'entrée : 3€</a>
+                        <a class="tarif">1ère demi-heure : Gratuit</a>
+                        <a class="tarif">2ème demi-heure : 0,51€</a>
+                        <a class="tarif">2ème heure : 1,02€</a>
+                        <a class="tarif">Chaque heure suivante : 2.04€</a>
+                    </p>
+                </li>
+                <li>
+                    <input type="checkbox" checked>
+                    <i></i>
+                    <h2 class="h2-tarif">Abonnement annuel</h2>
+                    <p class="input-tarifs">
+                        <a class="tarif">Frais d'entrée : 15,20€ (+5€*)</a>
+                        <a class="tarif">1ère demi-heure : Gratuit</a>
+                        <a class="tarif">2ème demi-heure : 0,51€</a>
+                        <a class="tarif">2ème heure : 1,02€</a>
+                        <a class="tarif">Chaque heure suivante : 2.04€</a>
+                        <a class="tarif">* Crédit temps</a>
+                    </p>
+                </li>
+                <li>
+                    <input type="checkbox" checked>
+                    <i></i>
+                    <h2 class="h2-tarif">Abonnement annuel (abonnés TAO)</h2>
+                    <p class="input-tarifs">
+                        <a class="tarif">Frais d'entrée : 5,10€ (+5€*)</a>
+                        <a class="tarif">1ère demi-heure : Gratuit</a>
+                        <a class="tarif">2ème demi-heure : 0,51€</a>
+                        <a class="tarif">2ème heure : 1,02€</a>
+                        <a class="tarif">Chaque heure suivante : 2.04€</a>
+                        <a class="tarif">* Crédit temps</a>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
