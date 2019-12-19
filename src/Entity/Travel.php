@@ -33,7 +33,7 @@ class Travel
     private $duration;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $calory;
 

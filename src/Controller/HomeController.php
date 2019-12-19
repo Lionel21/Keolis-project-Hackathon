@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class HomeController extends AbstractController
 {
     /**
@@ -34,6 +35,8 @@ class HomeController extends AbstractController
             $travel->setDuration($_POST['time']);
             $travel->setCalory(100, 100);
             $travel->setUser($this->getUser());
+            $calory = $calorieService->calculCalories($travel->getUser()->getWeight(), $travel->getDuration());
+            $travel->setCalory($calory);
             $entityManager->persist($travel);
             $entityManager->flush();
 
