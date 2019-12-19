@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Voyage;
+use App\Entity\travel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Voyage|null find($id, $lockMode = null, $lockVersion = null)
- * @method Voyage|null findOneBy(array $criteria, array $orderBy = null)
- * @method Voyage[]    findAll()
- * @method Voyage[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method travel|null find($id, $lockMode = null, $lockVersion = null)
+ * @method travel|null findOneBy(array $criteria, array $orderBy = null)
+ * @method travel[]    findAll()
+ * @method travel[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class VoyageRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Voyage::class);
+        parent::__construct($registry, travel::class);
     }
 
     // /**
-    //  * @return Voyage[] Returns an array of Voyage objects
+    //  * @return travel[] Returns an array of travel objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class VoyageRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Voyage
+    public function findOneBySomeField($value): ?travel
     {
         return $this->createQueryBuilder('v')
             ->andWhere('v.exampleField = :val')

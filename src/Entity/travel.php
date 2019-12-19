@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\VoyageRepository")
  */
-class Voyage
+class travel
 {
     /**
      * @ORM\Id()
@@ -26,6 +26,11 @@ class Voyage
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $duration;
 
     public function getId(): ?int
     {
@@ -52,6 +57,18 @@ class Voyage
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDuration(): ?float
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(float $duration): self
+    {
+        $this->duration = $duration;
 
         return $this;
     }
