@@ -3,6 +3,7 @@
 @import "navbar.scss";
 @import "tarifs.scss";
 @import "historic.scss";
+@import "login.scss";
 
 #map {
     width: 100vw;
@@ -18,7 +19,4 @@
     height: 40vh;
 }
 
-h1 {
-    background-color: #73be31;
-    color: white;
-}
+

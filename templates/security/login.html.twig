@@ -14,23 +14,21 @@
                     You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
                 </div>
             {% endif %}
-
-            <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
-            <label for="inputEmail">Email</label>
+            <div class="container-login">
+            <h1 class="h1-historic">Se connecter</h1>
+            <label for="inputEmail" class="input-login">Email</label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required
                    autofocus>
-            <label for="inputPassword">Mot de passe</label>
+            <label for="inputPassword" class="input-login">Mot de passe</label>
             <input type="password" name="password" id="inputPassword" class="form-control" required>
 
             <input type="hidden" name="_csrf_token"
-                   value="{{ csrf_token('authenticate') }}"
-            >
+                   value="{{ csrf_token('authenticate') }}">
 
-            <button class="btn btn-primary" type="submit">
-                Connexion
-            </button>
+            <button class="btn btn-general" type="submit">Connexion</button>
+            <a class="btn btn-general" href="{{ path('app_register') }}">Créer un compte</a>
+            </div>
         </form>
     </div>
-    <a href="{{ path('app_register') }}">Créer un compte</a>
 
 {% endblock %}
