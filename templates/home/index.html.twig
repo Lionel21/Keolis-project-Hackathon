@@ -3,8 +3,8 @@
 {% block title %}Vélo - Kilo{% endblock %}
 
 {% block body %}
-
-    <h1 class="w-100 text-center m-0"> Nom </h1>
+<div class="container">
+    <h1 class="w-100 text-center m-0">Vélo kilo</h1>
     <div class="d-flex justify-content-center">
         <div class="mb-5" id="map"></div>
     </div>
@@ -14,6 +14,8 @@
     <div class="mb-5 travel">
         {{ include('travel/_form.html.twig') }}
     </div>
+</div>
+
 {% endblock %}
 
 {% block javascripts %}
