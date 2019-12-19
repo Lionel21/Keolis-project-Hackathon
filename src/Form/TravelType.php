@@ -21,13 +21,11 @@ class TravelType extends AbstractType
                 'choices' => $stations,
                 'label' => 'Départ',
                 'mapped' => false,
-                'attr'=> ['class'=>'start'],
             ])
             ->add('finish', ChoiceType::class, [
                 'choices' => $stations,
                 'label' => 'Arrivée',
                 'mapped' => false,
-                'attr'=> ['class'=>'finish'],
             ]);
     }
 
