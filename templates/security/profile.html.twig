@@ -1,25 +1,34 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="container-fluid">
+    <div class="container-fluid profile-container">
         <div id="container">
             <div id="hero-img"></div>
             <div id="profile-img">
                 <img src="http://emilcarlsson.se/assets/profile.png" alt=""/>
             </div>
             <div id="content">
-                <h1>{{ app.user.lastname }} {{ app.user.firstname }}</h1>
-                <div class="row">
+                <h1>{{ app.user.firstname }} {{ app.user.lastname }}</h1>
+                <div class="profile-infos-container">
                     {% if app.user.age is empty %}
 
-                        {% else %}
-                            <p class="col-6">{{ app.user.age }} ans </p>
-                            <p class="col-6">{{ app.user.weight }} kg </p>
-                            <p class="col-6">{{ app.user.taille }} cm </p>
+                    {% else %}
+                        <a>
+                            <p class="profile-infos-title">Age</p>
+                            <p class="profile-infos">{{ app.user.age }} ans </p>
+                        </a>
+                        <a>
+                            <p class="profile-infos-title">Poid</p>
+                            <p class="profile-infos">{{ app.user.weight }} kg </p>
+                        </a>
+                        <a>
+                            <p class="profile-infos-title">Taille</p>
+                            <p class="profile-infos">{{ app.user.taille }} cm </p>
+                        </a>
                     {% endif %}
                 </div>
 
-                <a class="btn btn-dark" href="{{ path('user_edit', {'id': app.user.id}) }}">Modifer</a>
-                <a  class="btn btn-dark" href="{{ path('app_logout') }}">Logout</a>
+                <a class="btn btn-general" href="{{ path('user_edit', {'id': app.user.id}) }}">Modifer</a>
+                <a class="btn btn-general" href="{{ path('app_logout') }}">Logout</a>
             </div>
         </div>
     </div>
