@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Vélo - Kilo{% endblock %}
 
 {% block body %}
 
+    <h1 class="w-100 text-center m-0"> Nom </h1>
     <div class="d-flex justify-content-center">
-        <div class="mt-5 mb-5" id="map"></div>
+        <div class="mb-5" id="map"></div>
     </div>
     <div class="js-stations" data-stations="{{ stations|json_encode|e('html_attr') }}">
     </div>
