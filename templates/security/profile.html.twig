@@ -3,9 +3,12 @@
     <div class="container-fluid">
         <h1>Bienvenue sur votre profil {{ app.user.lastname }} {{ app.user.firstname }}</h1>
         <h3>Vos informations </h3>
+        <p>Nom: {{ app.user.lastname }}</p>
+        <p>Prénom: {{ app.user.firstname }}</p>
         <p>Email: {{ app.user.email }}</p>
         <p>Age : {{ app.user.age }}</p>
         <p>Taille : {{ app.user.taille }}</p>
+        <p>Poids : {{ app.user.weight }}</p>
         <a class="btn btn-dark" href="{{ path('home_index') }}">Retour</a>
         <a class="btn btn-dark" href="{{ path('user_edit', {'id': app.user.id}) }}">Modifer</a>
 

@@ -39,7 +39,7 @@
         </div>
     </nav>
     {% if app.user %}
-        {{ app.user.email }}
+        {{ app.user.firstname }}
         <a href="{{ path('app_logout') }}"> Se déconnecter</a>
         <a href="{{ path('app_profile') }}">Mon profil</a>
     {% else %}

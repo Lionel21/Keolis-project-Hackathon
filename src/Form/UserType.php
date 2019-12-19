@@ -18,6 +18,7 @@ class UserType extends AbstractType
             ->add('firstname')
             ->add('age')
             ->add('taille')
+            ->add('weight')
         ;
     }
 
