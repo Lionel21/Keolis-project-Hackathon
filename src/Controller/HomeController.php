@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\CalorieService;
+
 
 class HomeController extends AbstractController
 {
@@ -18,7 +20,7 @@ class HomeController extends AbstractController
      * @param StationsService $stationsService
      * @return Response
      */
-    public function index(Request $request, StationsService $stationsService): Response
+    public function index(Request $request, StationsService $stationsService, CalorieService $calorieService): Response
     {
         $stations = $stationsService->getStations();
         $travel = new Travel();
@@ -31,6 +33,8 @@ class HomeController extends AbstractController
             $travel->setDistance($_POST['distance']);
             $travel->setDuration($_POST['time']);
             $travel->setUser($this->getUser());
+            $calory = $calorieService->calculCalories($travel->getUser()->getWeight(), $travel->getDuration());
+            $travel->setCalory($calory);
             $entityManager->persist($travel);
             $entityManager->flush();
 
