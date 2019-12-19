@@ -28,9 +28,9 @@ class HomeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-
             $travel->setDistance($_POST['distance']);
             $travel->setDuration($_POST['time']);
+            $travel->setUser(1);
             $entityManager->persist($travel);
             $entityManager->flush();
             var_dump($travel);
@@ -43,5 +43,4 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
-
 }
