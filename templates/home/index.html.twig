@@ -3,14 +3,20 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-    {% if app.user %}
-        {{ app.user.firstname }}
-        <a href="{{ path('app_logout') }}"> Se déconnecter</a>
-        <a href="{{ path('app_profile') }}">Mon profil</a>
-    {% else %}
-        <a href="{{ path('app_login') }}"> Se connecter</a>
-        <a href="{{ path('app_register') }}">Créer un compte</a>
-    {% endif %}
+    <div class="connexion">
+        {% if app.user %}
+            {{ app.user.firstname }}
+            <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            <a href="{{ path('app_profile') }}">Mon profil</a>
+        {% else %}
+            <div>
+                <a href="{{ path('app_login') }}"><i class="fas fa-user fa-2x"></i></a>
+            </div>
+            <div>
+                <a href="{{ path('app_register') }}"><i class="fa fa-user-plus fa-2x"></i></a>
+            </div>
+        {% endif %}
+    </div>
 
 <div class="js-stations" data-stations="{{ stations|json_encode|e('html_attr') }}">
 </div>
