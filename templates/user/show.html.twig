@@ -4,7 +4,9 @@
 
 {% block body %}
     <h1>User</h1>
-
+{% for travel in travels %}
+    {{ travel.distance }}
+    {% endfor %}
     <table class="table">
         <tbody>
             <tr>

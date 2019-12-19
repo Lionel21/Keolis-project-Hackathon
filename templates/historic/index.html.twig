@@ -1,42 +1,91 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+
+
 <div class="page-historic">
     <div class="resize-page-historic">
-        <h1 class="h1-historic">Historique</h1>
-        <div class="container-historic">
-            <div class="infos-historic">Total</div>
-            <div class="infos-historic">
-                <div class="infos-div-historic">
-                    <a class="title-infos-historic">Distance</a>
-                    <a class="result-infos-historic">2 Km</a>
-                </div>
-                <div class="infos-div-historic">
-                    <a class="title-infos-historic">Dépensé</a>
-                    <a class="result-infos-historic">100cal</a></div>
-                <div class="infos-div-historic">
-                    <a class="title-infos-historic">Temps</a>
-                    <a class="result-infos-historic">5 min</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="container-historic">
-            <div class="infos-historic">DATE</div>
-            <div class="infos-historic">
-                <div class="infos-div-historic">
-                    <a class="title-infos-historic">Distance</a>
-                    <a class="result-infos-historic">2 Km</a>
-                </div>
-                <div class="infos-div-historic">
-                    <a class="title-infos-historic">Dépensé</a>
-                    <a class="result-infos-historic">100cal</a></div>
-                <div class="infos-div-historic">
-                    <a class="title-infos-historic">Temps</a>
-                    <a class="result-infos-historic">5 min</a>
-                </div>
-            </div>
-        </div>
+        <h1 class="h1-historic">Historique</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="col-2">Index</th>
+                <th class="col-2">Temps</th>
+                <th class="col-2">Kcal</th>
+                <th class="col-2">Distance</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for travel in travels %}
+                <th scope="row">d</th>
+                <td>{{ travel.duration }}</td>
+                <td>{{ travel.calory|number_format(1) }}</td>
+                <td>{{ travel.distance }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            </tbody>
+        </table>
+        {#<div class="row">#}
+        {#{% for travel in travels %}#}
+        {#<div class="container-historic">#}
+            {#<div class="infos-historic">#}
+                {#<div class="pt">#}
+                    {#{{ loop.index }}#}
+                {#</div>#}
+                {#<div class="infos-div-historic">#}
+                    {#<a class="title-infos-historic">Distance</a>#}
+                    {#<a class="result-infos-historic">{{ travel.distance }} m</a>#}
+                {#</div>#}
+                {#<div class="infos-div-historic ">#}
+                    {#<a class="title-infos-historic">Dépensé</a>#}
+                    {#<a class="result-infos-historic">{{ travel.calory|number_format(1) }} kcal</a></div>#}
+                {#<div class="infos-div-historic ">#}
+                    {#<a class="title-infos-historic">Temps</a>#}
+                    {#<a class="result-infos-historic">{{ travel.duration/60 }}</a>#}
+                {#</div>#}
+                {#<div class="infos-div-historic ">#}
+                    {#<a class="title-infos-historic">Date</a>#}
+                    {#<a class="result-infos-historic">{{ travel.date|date('H:i')}}</a>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#{% endfor %}#}
+
+        {#<div class="container-historic">#}
+            {#<div class="infos-historic">DATE</div>#}
+            {#<div class="infos-historic">#}
+                {#<div class="infos-div-historic">#}
+                    {#<a class="title-infos-historic">Distance</a>#}
+                    {#<a class="result-infos-historic">2 Km</a>#}
+                {#</div>#}
+                {#<div class="infos-div-historic">#}
+                    {#<a class="title-infos-historic">Dépensé</a>#}
+                    {#<a class="result-infos-historic">100cal</a></div>#}
+                {#<div class="infos-div-historic">#}
+                    {#<a class="title-infos-historic">Temps</a>#}
+                    {#<a class="result-infos-historic">5 min</a>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
     </div>
 </div>
+</div>
     {% endblock %}
+{% block javascript %}
+
+{% endblock %}

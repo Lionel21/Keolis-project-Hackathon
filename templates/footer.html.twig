@@ -19,8 +19,8 @@
             </div>
         </div>
     </a>
-
-    <a class="navbar-brand" href="{{ path('historic_index') }}">
+    {% if app.user %}
+    <a class="navbar-brand" href="{{ path('user_historic', {'id':app.user.id}) }}">
         <div class="iconFlex">
             <i class="fas fa-history fa-1x"></i>
             <div class="sizeNav">
@@ -28,7 +28,16 @@
             </div>
         </div>
     </a>
-
+    {% else %}
+    <a class="navbar-brand" href="{{ path('app_login') }}">
+        <div class="iconFlex">
+            <i class="fas fa-history fa-1x"></i>
+            <div class="sizeNav">
+                <p class="titleNav">Historique</p>
+            </div>
+        </div>
+    </a>
+    {% endif %}
     <a class="navbar-brand" href="{{ path('user_index') }}">
         <div class="iconFlex">
             <i class="fas fa-trophy fa-1x"></i>
