@@ -18,7 +18,6 @@ class HistoricController extends AbstractController
      */
     public function index(User $user): Response
     {
-        dd($user);
         $travels = $user->getTravels();
         return $this->render('historic/index.html.twig', [
             'user' => $user,
