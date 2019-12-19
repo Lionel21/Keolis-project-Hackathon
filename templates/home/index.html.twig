@@ -3,6 +3,7 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+
     {% if app.user %}
         {{ app.user.firstname }}
         <a href="{{ path('app_logout') }}">Se déconnecter</a>
@@ -66,7 +67,5 @@
     </a>
 
 </nav>
-
-
 
 {% endblock %}
