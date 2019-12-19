@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -60,7 +62,10 @@ class User implements UserInterface
      */
     private $weight;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Travel", mappedBy="user")
+     */
+    private $travels;
 
     public function getId(): ?int
     {
@@ -78,6 +83,68 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTravels()
+    {
+        return $this->travels;
+    }
+
+    /**
+     * @param mixed $travels
+     */
+    public function setTravels($travels): void
+    {
+        $this->travels = $travels;
+    }
+    public function __construct()
+    {
+        $this->travels = new ArrayCollection();
+    }
+
+
+    /**
+     * @return Collection|Travel[]
+     */
+    public function getPrograms(): Collection
+    {
+        return $this->travels;
+    }
+
+    /**
+     * param Travel $travel
+     * @return User
+     */
+    public function addProgram(Travel $travel): self
+    {
+        if (!$this->travels->contains($travel)) {
+            $this->travels[] = $travel;
+            $travel->setUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Travel $travel
+     * @return User
+     */
+
+    public function removeProgram(Travel $travel): self
+    {
+        if ($this->travels->contains($travel)) {
+            $this->travels->removeElement($travel);
+            // set the owning side to null (unless already changed)
+            if ($travel->getUser() === $this) {
+                $travel->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
 
     /**
      * A visual identifier that represents this user.

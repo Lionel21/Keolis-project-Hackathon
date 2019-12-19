@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,8 +16,12 @@ class HistoricController extends AbstractController
     /**
      * @Route("/", name="historic_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(User $user): Response
     {
-        return $this->render('historic/index.html.twig');
+        $travels = $user->getTravels();
+        return $this->render('historic/index.html.twig', [
+            'user' => $user,
+            'travels' => $travels,
+        ]);
     }
 }

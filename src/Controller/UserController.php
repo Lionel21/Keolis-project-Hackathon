@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Repository\VoyageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,8 +54,10 @@ class UserController extends AbstractController
      */
     public function show(User $user): Response
     {
+        $travels = $user->getTravels();
         return $this->render('user/show.html.twig', [
             'user' => $user,
+            'travels' => $travels,
         ]);
     }
 
@@ -90,5 +93,16 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('user_index');
+    }
+    /**
+     * @Route("/historic/{id}", name="user_historic", methods={"GET"})
+     */
+    public function showHistoric(User $user): Response
+    {
+        $travels = $user->getTravels();
+        return $this->render('historic/index.html.twig', [
+            'user' => $user,
+            'travels' => $travels,
+        ]);
     }
 }

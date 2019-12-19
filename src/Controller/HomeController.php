@@ -8,6 +8,7 @@ use App\Repository\VoyageRepository;
 use App\Service\CalorieService;
 use App\Services\DistanceService;
 use App\Services\StationsService;
+use Doctrine\DBAL\Types\DateTimeType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,10 +27,12 @@ class HomeController extends AbstractController
     {
         $stations = $stationsService->getStations();
         $travel = new Travel();
+
         $form = $this->createForm(TravelType::class, $travel);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $date = new \DateTime();
             $data = $form->getData();
             $user = $this->getUser();
             $entityManager = $this->getDoctrine()->getManager();
@@ -39,9 +42,10 @@ class HomeController extends AbstractController
             $travel->setUser($this->getUser());
             $calory = $calorieService->calculCalories($travel->getUser()->getWeight(), $travel->getDuration());
             $travel->setCalory($calory);
+            $travel->setDate($date);
             $entityManager->persist($travel);
-            $entityManager->flush();
 
+            $entityManager->flush();
             return $this->redirectToRoute('home_road', [
                 'start' => $_POST['travel']['start'],
                 'finish' => $_POST['travel']['finish'],
@@ -70,9 +74,15 @@ class HomeController extends AbstractController
         $calories = round($calorieService->calculCalories($user->getWeight(), $_GET['duration']));
         $totalDistance = $distanceService->getDistanceTotal($voyageRepository, $user);
 
+        $stepBefore = (floor(($totalDistance-$_GET['distance']))%10000)*10000;
+        $stepAfter = floor($totalDistance%10000)*10000;
+        $step = $stepAfter - $stepBefore;
+
+
         return $this->render('/home/road.html.twig', [
             'stations' => $stations,
             'travel' => [$_GET['start'], $_GET['finish'], $_GET['distance'], $calories, $totalDistance],
+            'step' => $step,
         ]);
     }
 }
