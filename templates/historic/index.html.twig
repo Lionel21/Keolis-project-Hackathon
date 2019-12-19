@@ -14,14 +14,14 @@
             <div class="infos-historic">
                 <div class="infos-div-historic">
                     <a class="title-infos-historic">Distance</a>
-                    <a class="result-infos-historic">{{ travel.distance }} m</a>
+                    <a class="result-infos-historic">{{ (travel.distance/1000)|round(1) }} km</a>
                 </div>
                 <div class="infos-div-historic ">
                     <a class="title-infos-historic">Dépensé</a>
                     <a class="result-infos-historic">{{ travel.calory|number_format(1) }} kcal</a></div>
                 <div class="infos-div-historic ">
                     <a class="title-infos-historic">Temps</a>
-                    <a class="result-infos-historic">{{ travel.duration/60 }}</a>
+                    <a class="result-infos-historic">{{ (travel.duration/60)|round(1) }} min</a>
                 </div>
                 <div class="infos-div-historic ">
                     <a class="title-infos-historic">Date</a>
