@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PointsController extends AbstractController
 {
     /**
-     * @Route("/travel/{user}", name="travel")
+     * @Route("/travel/{id}", name="travel")
      *
      * @param Travel $travel
      * @param CalorieService $calorieService
