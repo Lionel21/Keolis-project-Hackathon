@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Travel;
 use App\Form\TravelType;
+use App\Repository\VoyageRepository;
 use App\Service\CalorieService;
+use App\Services\DistanceService;
 use App\Services\StationsService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -43,6 +45,8 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('home_road', [
                 'start' => $_POST['travel']['start'],
                 'finish' => $_POST['travel']['finish'],
+                'distance' => $_POST['distance'],
+                'duration' => $_POST['time'],
             ]);
         }
 
@@ -59,12 +63,16 @@ class HomeController extends AbstractController
      * @param StationsService $stationsService
      * @return Response
      */
-    public function road(Request $request, StationsService $stationsService): Response
+    public function road(Request $request, StationsService $stationsService, CalorieService $calorieService, DistanceService $distanceService, VoyageRepository $voyageRepository): Response
     {
         $stations = $stationsService->getStations();
+        $user = $this->getUser();
+        $calories = round($calorieService->calculCalories($user->getWeight(), $_GET['duration']));
+        $totalDistance = $distanceService->getDistanceTotal($voyageRepository, $user);
+
         return $this->render('/home/road.html.twig', [
             'stations' => $stations,
-            'travel' => [$_GET['start'], $_GET['finish']],
+            'travel' => [$_GET['start'], $_GET['finish'], $_GET['distance'], $calories, $totalDistance],
         ]);
     }
 }
