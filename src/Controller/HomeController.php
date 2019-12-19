@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Travel;
 use App\Form\TravelType;
+use App\Service\CalorieService;
 use App\Services\StationsService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,9 +30,11 @@ class HomeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+            $user = $this->getUser();
             $entityManager = $this->getDoctrine()->getManager();
             $travel->setDistance($_POST['distance']);
             $travel->setDuration($_POST['time']);
+            $travel->setCalory(100, 100);
             $travel->setUser($this->getUser());
             $calory = $calorieService->calculCalories($travel->getUser()->getWeight(), $travel->getDuration());
             $travel->setCalory($calory);
@@ -59,8 +62,10 @@ class HomeController extends AbstractController
      */
     public function road(Request $request, StationsService $stationsService): Response
     {
+        $stations = $stationsService->getStations();
         return $this->render('/home/road.html.twig', [
-            'stations' => [$_GET['start'], $_GET['finish']],
+            'stations' => $stations,
+            'travel' => [$_GET['start'], $_GET['finish']],
         ]);
     }
 }
