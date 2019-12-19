@@ -13,8 +13,9 @@ class HomeController extends AbstractController
      * @Route("/", name="home_index")
      */
 
-    public function index(StationsService $stationsService): Response
+    public function index(StationsService $stationsService):Response
     {
+
         $stations = $stationsService->getStations();
 
         return $this->render('/home/index.html.twig', [
