@@ -3,22 +3,21 @@
 
 namespace App\Services;
 
-use Symfony\Component\HttpClient\HttpClient;
 
-class StationsService
+use App\Entity\Travel;
+use App\Entity\User;
+use App\Repository\VoyageRepository;
+
+class DistanceService
 {
-    public function getStations(): array
+    public function getDistanceTotal(VoyageRepository $travelRepository, User $user): float
     {
-        $client = HttpClient::create();
-        $url = 'https://data.orleans-metropole.fr/api/records/1.0/search/?apikey=289cad31eb950033126984e663a0e35a82394938ea542d4cabf4c095&dataset=liste-des-stations-velo-2018-orleans-metropole&rows=35';
-        $response = $client->request('GET', $url);
-        $content = $response->toArray();
-
-        foreach ($content['records'] as $station) {
-            $stations[$station['fields']['nomstation']] = [$station['fields']['latitude'], $station['fields']['longitude']];
+        $travels = $travelRepository->findBy(['user' => $user]);
+        $total = 0;
+        foreach ($travels as $travel) {
+                $total += $travel->getDistance();
         }
-
-        return $stations;
+        return $total;
     }
 
     public function calcDistance(float $lat1, float $lng1, float $lat2, float $lng2) : float

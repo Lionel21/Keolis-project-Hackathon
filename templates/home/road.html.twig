@@ -4,73 +4,31 @@
 
 {% block body %}
 
+    <h1 class="w-100 text-center m-0"> Trajet effectué </h1>
     <div class="d-flex justify-content-center">
-        <div class="mt-5 mb-5" id="mapRoad"></div>
+        <div class="mb-5" id="mapRoad"></div>
     </div>
     <div class="js-stations" data-stations="{{ stations|json_encode|e('html_attr') }}">
+    </div>
     <div class="js-travel" data-travel="{{ travel|json_encode|e('html_attr') }}">
     </div>
 
-    <nav class="navbar fixed-bottom mt-5">
+    {% if app.user %}
+        <div>
+            <h2>Lors de ce voyage : </h2>
+            <p>Vous avez parcourus {{ travel[2] }} mètres.</p>
+            <p>Vous avez perdu {{ travel[3] }} calories.</p>
+        </div>
 
-        <a class="navbar-brand" href="#">
-            <div class="iconFlex">
-                <i class="fas fa-home fa-2x"></i>
-                <div>
-                    <p class="titleNav">Accueil</p>
-                </div>
-            </div>
-        </a>
+        <div>
+            <h2>Au total : </h2>
+            <p>Vous avez parcourus {{ travel[4] }} mètres.</p>
 
-        <a class="navbar-brand" href="#">
-            <div class="iconFlex">
-                <i class="fas fa-euro-sign fa-2x"></i>
-                <div>
-                    <p class="titleNav">Tarifs</p>
-                </div>
-            </div>
-        </a>
-
-        <a class="navbar-brand" href="#">
-            <div class="iconFlex">
-                <i class="fas fa-biking fa-2x"></i>
-                <div>
-                    <p class="titleNav">Disponibilités</p>
-                </div>
-            </div>
-        </a>
-
-        <a class="navbar-brand" href="#">
-            <div class="iconFlex">
-                <i class="fas fa-trophy fa-2x"></i>
-                <div>
-                    <p class="titleNav">Rang</p>
-                </div>
-            </div>
-        </a>
+        </div>
+    {% endif %}
 
 
-        {% if app.user %}
-            <a class="navbar-brand" href="{{ path('app_profile') }}">
-                <div class="iconFlex">
-                    <i class="fas fa-users fa-2x"></i>
-                    <div>
-                        <p class="titleNav"> Profil</p>
-                    </div>
-                </div>
-            </a>
-        {% else %}
-            <a class="navbar-brand" href="{{ path('app_register') }}">
-                <div class="iconFlex">
-                    <i class="fas fa-users fa-2x"></i>
-                    <div>
-                        <p class="titleNav"> Créer un compte</p>
-                    </div>
-                </div>
-            </a>
-        {% endif %}
 
-    </nav>
 
 {% endblock %}
 
