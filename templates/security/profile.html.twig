@@ -7,7 +7,7 @@
         <p>Age : {{ app.user.age }}</p>
         <p>Taille : {{ app.user.taille }}</p>
         <a class="btn btn-dark" href="{{ path('home_index') }}">Retour</a>
-        <a class="btn btn-dark" href="{{ path('home_index') }}">Modifer</a>
+        <a class="btn btn-dark" href="{{ path('user_edit', {'id': app.user.id}) }}">Modifer</a>
 
     </div>
 {% endblock %}
