@@ -19,6 +19,8 @@ import 'leaflet.markercluster';
 import 'leaflet.markercluster/dist/leaflet.markercluster';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+import 'leaflet-routing-machine';
+import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.scss');
