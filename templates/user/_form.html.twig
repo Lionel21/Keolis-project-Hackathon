@@ -1,4 +1,19 @@
 {{ form_start(form) }}
+<div id="container">
+    <div id="hero-img"></div>
+    <div id="profile-img">
+        <img src="http://emilcarlsson.se/assets/profile.png" alt="" />
+    </div>
+    <div id="content">
+        <h1>    {{ form_row(form.lastname) }}    {{ form_row(form.firstname) }}</h1>
+        <p>    {{ form_row(form.age) }}</p>
+        <p>    {{ form_row(form.weight) }}</p>
+        <p>    {{ form_row(form.taille) }}</p>
+        <button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+
+    </div>
+</div>
+
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
