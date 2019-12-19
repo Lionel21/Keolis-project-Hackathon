@@ -13,9 +13,10 @@ class PointsController extends AbstractController
     /**
      * @Route("/user/{id}", name="user")
      * @param User $user
+     * @param CalorieService $calorieService
      *
      */
-    public function calcPoints(User $user,CalorieService $calorieService)
+    public function calcPoints()
 
     {
         return $this->render('/user/index.html.twig');
