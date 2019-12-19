@@ -1,5 +1,6 @@
 {{ form_start(form) }}
 <div class="container-fluid">
+    <div class="profile-container-page">
     <div id="container">
         <div id="hero-img"></div>
         <div id="profile-img">
@@ -7,16 +8,17 @@
         </div>
         <div id="content">
             <div class="row">
-                <h1 class="col-6">{{ form_row(form.lastname) }}</h1>
                 <h1 class="col-6">{{ form_row(form.firstname) }}</h1>
+                <h1 class="col-6">{{ form_row(form.lastname) }}</h1>
 
                 <h1 class="col-6">{{ form_row(form.age) }}</h1>
                 <h1 class="col-6">{{ form_row(form.weight) }}</h1>
                 </div>
 
-                <h1>    {{ form_row(form.taille) }}</h1>
-                <button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+                <h1>{{ form_row(form.taille) }}</h1>
+                <button class="btn btn-general">{{ button_label|default('Sauvegarder') }}</button>
             </div>
         </div>
+    </div>
     </div>
 {{ form_end(form) }}
