@@ -3,12 +3,12 @@
 
 namespace App\Service;
 
-const KCALMIN = 24.5/200;
 class CalorieService
 {
-    public function calculCalories(int $poids,int $temps): float
+    const  KCALMIN =  24.5/200;
+    public function calculCalories(int $weight, $duration=15): float
     {
-        $calorie = KCALMIN*$poids*$temps;
+        $calorie = self::KCALMIN*$weight*$duration;
         return $calorie;
     }
 }
