@@ -20,7 +20,6 @@ class HomeController extends AbstractController
      */
     public function index(Request $request, StationsService $stationsService): Response
     {
-
         $stations = $stationsService->getStations();
         $travel = new Travel();
         $form = $this->createForm(TravelType::class, $travel);
