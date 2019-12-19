@@ -20,7 +20,7 @@ class PointsController extends AbstractController
      */
     public function calcPoints(Travel $travel, CalorieService $calorieService):Response
     {
-        $calory = $calorieService->calculCalories($travel->getUser()->getWeight(),$travel->getDuration());
+        $calory = $calorieService->calculCalories($travel->getUser()->getWeight(), $travel->getDuration());
         $travel->setCalory($calory);
         $user = $travel->getUser();
         return  $this->render('travel/show.html.twig',[

@@ -4,11 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Travel;
 use App\Form\TravelType;
+use App\Repository\VoyageRepository;
+use App\Service\CalorieService;
+use App\Services\DistanceService;
 use App\Services\StationsService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class HomeController extends AbstractController
 {
@@ -18,7 +22,7 @@ class HomeController extends AbstractController
      * @param StationsService $stationsService
      * @return Response
      */
-    public function index(Request $request, StationsService $stationsService): Response
+    public function index(Request $request, StationsService $stationsService, CalorieService $calorieService): Response
     {
         $stations = $stationsService->getStations();
         $travel = new Travel();
@@ -27,16 +31,22 @@ class HomeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+            $user = $this->getUser();
             $entityManager = $this->getDoctrine()->getManager();
             $travel->setDistance($_POST['distance']);
             $travel->setDuration($_POST['time']);
+            $travel->setCalory(100, 100);
             $travel->setUser($this->getUser());
+            $calory = $calorieService->calculCalories($travel->getUser()->getWeight(), $travel->getDuration());
+            $travel->setCalory($calory);
             $entityManager->persist($travel);
             $entityManager->flush();
 
             return $this->redirectToRoute('home_road', [
                 'start' => $_POST['travel']['start'],
                 'finish' => $_POST['travel']['finish'],
+                'distance' => $_POST['distance'],
+                'duration' => $_POST['time'],
             ]);
         }
 
@@ -52,10 +62,16 @@ class HomeController extends AbstractController
      * @param StationsService $stationsService
      * @return Response
      */
-    public function road(Request $request, StationsService $stationsService): Response
+    public function road(Request $request, StationsService $stationsService, CalorieService $calorieService, DistanceService $distanceService, VoyageRepository $voyageRepository): Response
     {
+        $stations = $stationsService->getStations();
+        $user = $this->getUser();
+        $calories = round($calorieService->calculCalories($user->getWeight(), $_GET['duration']));
+        $totalDistance = $distanceService->getDistanceTotal($voyageRepository, $user);
+
         return $this->render('/home/road.html.twig', [
-            'stations' => [$_GET['start'], $_GET['finish']],
+            'stations' => $stations,
+            'travel' => [$_GET['start'], $_GET['finish'], $_GET['distance'], $calories, $totalDistance],
         ]);
     }
 }

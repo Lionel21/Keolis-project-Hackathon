@@ -8,7 +8,7 @@ class CalorieService
     const  KCALMIN =  24.5/200;
     public function calculCalories(int $weight, $duration): float
     {
-        $calorie = self::KCALMIN*$weight*$duration;
+        $calorie = self::KCALMIN*$weight*($duration/60);
         return $calorie;
     }
 }
