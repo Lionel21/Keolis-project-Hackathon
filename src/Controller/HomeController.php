@@ -29,7 +29,7 @@ class HomeController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $travel->setDistance($_POST['distance']);
             $travel->setDuration($_POST['time']);
-            $travel->setUser(1);
+            $travel->setUser($this->getUser());
             $entityManager->persist($travel);
             $entityManager->flush();
             var_dump($travel);

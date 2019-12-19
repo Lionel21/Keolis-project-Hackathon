@@ -9,18 +9,25 @@
     </div>
     <div class="js-stations" data-stations="{{ stations|json_encode|e('html_attr') }}">
     </div>
+
+    <div class="mb-5">
+        {% if app.user %}
+            {{ app.user.firstname }}
+            <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            <a href="{{ path('app_profile') }}">Mon profil</a>
+        {% else %}
+            <a href="{{ path('app_login') }}"> Se connecter</a>
+            <a href="{{ path('app_register') }}">Créer un compte</a>
+        {% endif %}
+    </div>
+
+    <div class="mb-5">
     {{ include('travel/_form.html.twig') }}
+    </div>
 
-    {% if app.user %}
-        {{ app.user.firstname }}
-        <a href="{{ path('app_logout') }}">Se déconnecter</a>
-        <a href="{{ path('app_profile') }}">Mon profil</a>
-    {% else %}
-        <a href="{{ path('app_login') }}"> Se connecter</a>
-        <a href="{{ path('app_register') }}">Créer un compte</a>
-    {% endif %}
 
-    <nav class="navbar fixed-bottom">
+
+    <nav class="navbar fixed-bottom mt-5">
 
         <a class="navbar-brand" href="#">
             <div class="iconFlex">
