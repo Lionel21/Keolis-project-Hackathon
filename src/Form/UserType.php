@@ -22,7 +22,8 @@ class UserType extends AbstractType
                 'label' => false
             ])
             ->add('age', null, [
-                'label' => false
+                'label' => false,
+
             ])
             ->add('taille', null, [
                 'label' => false
