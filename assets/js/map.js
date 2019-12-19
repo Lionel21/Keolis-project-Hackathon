@@ -18,31 +18,111 @@ document.addEventListener('DOMContentLoaded', () => {
         map.addLayer(m);
     }
 
-    const station1 = stations['PLACEDUCHATELET'];
-    const station2 = stations['PLACEDELALOIRE'];
-    console.log(station1, station2);
+    let station1 = stations[document.getElementById("travel_start").value];
+    let station2 = stations[document.getElementById("travel_finish").value];
+    const change1 = document.getElementById('travel_start');
+    const change2 = document.getElementById('travel_finish');
 
-    const routing = L.Routing.control({
-        // show: false,
-        waypoints: [
-            L.latLng(station1[0], station1[1]),
-            L.latLng(station2[0], station2[1])
-        ],
-        router: new L.Routing.mapbox('pk.eyJ1Ijoic2Rlc291c2EiLCJhIjoiY2s0YnBsMWN1MDQweTNlbTB6NXRmdHlxeSJ9.MN6NQxtqrcLz0qUDeTD-rg', { profile: 'mapbox/cycling' })
+    change1.addEventListener('change', (e) => {
+        station1 = stations[document.getElementById("travel_start").value];
+
+        const routing = L.Routing.control({
+            show: false,
+            waypoints: [
+                L.latLng(station1[0], station1[1]),
+                L.latLng(station2[0], station2[1])
+            ],
+            router: new L.Routing.mapbox('pk.eyJ1Ijoic2Rlc291c2EiLCJhIjoiY2s0YnBsMWN1MDQweTNlbTB6NXRmdHlxeSJ9.MN6NQxtqrcLz0qUDeTD-rg', { profile: 'mapbox/cycling' })
+        });
+        routing.addTo(map);
+
+        let totalDistance = routing.on('routesfound', function(e) {
+            const distance = e.routes[0].summary.totalDistance;
+            const time = e.routes[0].summary.totalTime;
+
+            const inputDistance = document.createElement("input");
+            inputDistance.setAttribute("type", "hidden");
+            inputDistance.setAttribute("value", distance);
+            inputDistance.setAttribute("name", "distance");
+            document.getElementById("formHome").appendChild(inputDistance);
+            const inputTime = document.createElement("input");
+            inputTime.setAttribute("type", "hidden");
+            inputTime.setAttribute("value", time);
+            inputTime.setAttribute("name", "time");
+            document.getElementById("formHome").appendChild(inputTime);
+        });
     });
-    routing.addTo(map);
 
-    let totalDistance = routing.on('routesfound', function(e) {
-        const distance = e.routes[0].summary.totalDistance;
-        const time = e.routes[0].summary.totalTime;
+    change2.addEventListener('change', (e) => {
+        station2 = stations[document.getElementById("travel_finish").value];
 
-        var formData = new FormData();
-        formData.append('distance', distance);
-        formData.append('time', time);
-        const request = new XMLHttpRequest();
-        request.open("POST", '/road');
-        request.send(formData);
+        const routing = L.Routing.control({
+            show: false,
+            waypoints: [
+                L.latLng(station1[0], station1[1]),
+                L.latLng(station2[0], station2[1])
+            ],
+            router: new L.Routing.mapbox('pk.eyJ1Ijoic2Rlc291c2EiLCJhIjoiY2s0YnBsMWN1MDQweTNlbTB6NXRmdHlxeSJ9.MN6NQxtqrcLz0qUDeTD-rg', { profile: 'mapbox/cycling' })
+        });
+        routing.addTo(map);
+
+        let totalDistance = routing.on('routesfound', function(e) {
+            const distance = e.routes[0].summary.totalDistance;
+            const time = e.routes[0].summary.totalTime;
+
+            const inputDistance = document.createElement("input");
+            inputDistance.setAttribute("type", "hidden");
+            inputDistance.setAttribute("value", distance);
+            inputDistance.setAttribute("name", "distance");
+            document.getElementById("formHome").appendChild(inputDistance);
+            const inputTime = document.createElement("input");
+            inputTime.setAttribute("type", "hidden");
+            inputTime.setAttribute("value", time);
+            inputTime.setAttribute("name", "time");
+            document.getElementById("formHome").appendChild(inputTime);
+        });
     });
+
+
+
+
+
+
+
+
+
+
+
+    // document.getElementById("formTravel").addEventListener('submit', () => {
+    //     const station1 = stations[document.getElementById("travel_start").value];
+    //     const station2 = stations[document.getElementById("travel_finish").value];
+    //
+    //     const routing = L.Routing.control({
+    //         show: false,
+    //         waypoints: [
+    //             L.latLng(station1[0], station1[1]),
+    //             L.latLng(station2[0], station2[1])
+    //         ],
+    //         router: new L.Routing.mapbox('pk.eyJ1Ijoic2Rlc291c2EiLCJhIjoiY2s0YnBsMWN1MDQweTNlbTB6NXRmdHlxeSJ9.MN6NQxtqrcLz0qUDeTD-rg', { profile: 'mapbox/cycling' })
+    //     });
+    //     routing.addTo(map);
+    //
+    //     let totalDistance = routing.on('routesfound', function(e) {
+    //         const distance = e.routes[0].summary.totalDistance;
+    //         const time = e.routes[0].summary.totalTime;
+    //
+    //         const inputDistance = document.createElement("input");
+    //         inputDistance.setAttribute("type", "hidden");
+    //         inputDistance.setAttribute("value", distance);
+    //         inputDistance.setAttribute("name", "distance");
+    //         const inputTime = document.createElement("input");
+    //         inputTime.setAttribute("type", "hidden");
+    //         inputTime.setAttribute("value", time);
+    //         inputTime.setAttribute("name", "time");
+    //
+    //         document.getElementById("formHome").appendChild(inputDistance);
+    //         document.getElementById("formHome").appendChild(inputTime);
+    //
+    //     });
+    // });
 });
-
-
