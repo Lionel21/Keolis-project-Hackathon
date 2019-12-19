@@ -6,6 +6,7 @@ use App\Entity\Travel;
 use App\Form\TravelType;
 use App\Service\CalorieService;
 use App\Services\StationsService;
+use Doctrine\DBAL\Types\DateTimeType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,10 +25,12 @@ class HomeController extends AbstractController
     {
         $stations = $stationsService->getStations();
         $travel = new Travel();
+
         $form = $this->createForm(TravelType::class, $travel);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $date = new \DateTime();
             $data = $form->getData();
             $user = $this->getUser();
             $entityManager = $this->getDoctrine()->getManager();
@@ -37,9 +40,10 @@ class HomeController extends AbstractController
             $travel->setUser($this->getUser());
             $calory = $calorieService->calculCalories($travel->getUser()->getWeight(), $travel->getDuration());
             $travel->setCalory($calory);
+            $travel->setDate($date);
             $entityManager->persist($travel);
-            $entityManager->flush();
 
+            $entityManager->flush();
             return $this->redirectToRoute('home_road', [
                 'start' => $_POST['travel']['start'],
                 'finish' => $_POST['travel']['finish'],
