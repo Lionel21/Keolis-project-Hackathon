@@ -26,19 +26,37 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
             $travel->setDistance($_POST['distance']);
             $travel->setDuration($_POST['time']);
             $travel->setUser($this->getUser());
             $entityManager->persist($travel);
             $entityManager->flush();
-            //return $this->redirectToRoute('home_index');
+
+            return $this->redirectToRoute('home_road', [
+                'start' => $_POST['travel']['start'],
+                'finish' => $_POST['travel']['finish'],
+            ]);
         }
 
         return $this->render('/home/index.html.twig', [
             'stations' => $stations,
             'form' => $form->createView(),
-            'controller_name' => 'HomeController',
+        ]);
+    }
+
+
+    /**
+     * @Route("/road/", name="home_road", methods={"GET","POST"})
+     * @param Request $request
+     * @param StationsService $stationsService
+     * @return Response
+     */
+    public function road(Request $request, StationsService $stationsService): Response
+    {
+        return $this->render('/home/road.html.twig', [
+            'stations' => [$_GET['start'], $_GET['finish']],
         ]);
     }
 }

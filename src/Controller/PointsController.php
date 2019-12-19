@@ -2,22 +2,30 @@
 
 namespace App\Controller;
 
+use App\Entity\Travel;
 use App\Entity\User;
 use App\Service\CalorieService;
-use http\Client\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PointsController extends AbstractController
 {
     /**
-     * @Route("/user/{id}", name="user")
-     * @param User $user
+     * @Route("/travel/{user}", name="travel")
      *
+     * @param Travel $travel
+     * @param CalorieService $calorieService
+     * @return Response
      */
-    public function calcPoints(User $user,CalorieService $calorieService)
-
+    public function calcPoints(Travel $travel, CalorieService $calorieService):Response
     {
-        return $this->render('/user/index.html.twig');
+        $calory = $calorieService->calculCalories($travel->getUser()->getWeight());
+        $travel->setCalory($calory);
+        $user = $travel->getUser();
+        return  $this->render('travel/show.html.twig',[
+            'travel'=>$travel,
+            'user'=>$user,
+        ]);
     }
 }
