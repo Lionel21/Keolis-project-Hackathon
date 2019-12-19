@@ -9,10 +9,15 @@
             <div id="content">
                 <h1>{{ app.user.lastname }} {{ app.user.firstname }}</h1>
                 <div class="row">
-                <p class="col-6">{{ app.user.age }} ans </p>
-                <p class="col-6">{{ app.user.weight }} kg </p>
+                    {% if app.user.age is empty %}
+
+                        {% else %}
+                            <p class="col-6">{{ app.user.age }} ans </p>
+                            <p class="col-6">{{ app.user.weight }} kg </p>
+                            <p class="col-6">{{ app.user.taille }} cm </p>
+                    {% endif %}
                 </div>
-                <p>{{ app.user.taille }} cm </p>
+
                 <a class="btn btn-dark" href="{{ path('user_edit', {'id': app.user.id}) }}">Modifer</a>
             </div>
         </div>

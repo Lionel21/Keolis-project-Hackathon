@@ -46,7 +46,6 @@ class HomeController extends AbstractController
         return $this->render('/home/index.html.twig', [
             'stations' => $stations,
             'form' => $form->createView(),
-            'controller_name' => 'HomeController',
         ]);
     }
 
