@@ -20,15 +20,16 @@
             <p>Vous avez perdu {{ travel[3] }} calories.</p>
         </div>
 
-        <div>
+        <div class="vh-100">
             <h2>Au total : </h2>
             <p>Vous avez parcourus {{ travel[4] }} mètres.</p>
+            {% if step >= 1 %}
+                <p>Vous avez franchi un palier!</p>
+                <p>10 km parcourus : Prochain voyage gratuit!</p>
+            {% endif %}
 
         </div>
     {% endif %}
-
-
-
 
 {% endblock %}
 
