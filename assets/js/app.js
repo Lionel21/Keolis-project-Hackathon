@@ -16,3 +16,6 @@ require('../css/app.scss');
 const $ = require('jquery');
 // eslint-disable-next-line import/no-extraneous-dependencies
 require('bootstrap');
+
+require('@fortawesome/fontawesome-free/css/all.min.css');
+require('@fortawesome/fontawesome-free/js/all.js');
