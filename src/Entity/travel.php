@@ -32,6 +32,11 @@ class travel
      */
     private $duration;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $calory;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class travel
     public function setDuration(float $duration): self
     {
         $this->duration = $duration;
+
+        return $this;
+    }
+
+    public function getCalory(): ?float
+    {
+        return $this->calory;
+    }
+
+    public function setCalory(float $calory): self
+    {
+        $this->calory = $calory;
 
         return $this;
     }

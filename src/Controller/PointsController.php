@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\travel;
 use App\Entity\User;
 use App\Service\CalorieService;
 use http\Client\Response;
@@ -12,13 +13,15 @@ class PointsController extends AbstractController
 {
     /**
      * @Route("/user/{id}", name="user")
-     * @param User $user
+     * @param travel $travel
      * @param CalorieService $calorieService
-     *
+     * @return Response
      */
-    public function calcPoints()
-
+    public function calcPoints(travel $travel, CalorieService $calorieService):Response
     {
-        return $this->render('/user/index.html.twig');
+        $calory = $calorieService->calculCalories($travel->getUser()->$travel->getDuration());
+        return  $this->render('user/index.html.twig',[
+            'travel'=> $travel
+        ]);
     }
 }
