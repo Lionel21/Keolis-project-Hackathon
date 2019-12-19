@@ -10,22 +10,9 @@
     <div class="js-stations" data-stations="{{ stations|json_encode|e('html_attr') }}">
     </div>
 
-    <div class="mb-5">
-        {% if app.user %}
-            {{ app.user.firstname }}
-            <a href="{{ path('app_logout') }}">Se déconnecter</a>
-            <a href="{{ path('app_profile') }}">Mon profil</a>
-        {% else %}
-            <a href="{{ path('app_login') }}"> Se connecter</a>
-            <a href="{{ path('app_register') }}">Créer un compte</a>
-        {% endif %}
-    </div>
-
-    <div class="mb-5">
+    <div class="mb-5 travel">
     {{ include('travel/_form.html.twig') }}
     </div>
-
-
 
     <nav class="navbar fixed-bottom mt-5">
 
@@ -65,14 +52,26 @@
             </div>
         </a>
 
-        <a class="navbar-brand" href="#">
+
+        {% if app.user %}
+        <a class="navbar-brand" href="{{ path('app_profile') }}">
             <div class="iconFlex">
                 <i class="fas fa-users fa-2x"></i>
                 <div>
-                    <p class="titleNav">Profil</p>
+                    <p class="titleNav"> Profil</p>
                 </div>
             </div>
         </a>
+        {% else %}
+        <a class="navbar-brand" href="{{ path('app_register') }}">
+            <div class="iconFlex">
+                <i class="fas fa-users fa-2x"></i>
+                <div>
+                    <p class="titleNav"> Créer un compte</p>
+                </div>
+            </div>
+        </a>
+        {% endif %}
 
     </nav>
 

@@ -32,7 +32,6 @@ class HomeController extends AbstractController
             $travel->setUser($this->getUser());
             $entityManager->persist($travel);
             $entityManager->flush();
-            var_dump($travel);
             //return $this->redirectToRoute('home_index');
         }
 
