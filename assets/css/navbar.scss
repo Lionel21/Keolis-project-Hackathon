@@ -1,5 +1,5 @@
 nav{
-  background-color:#fff;
+  background-color:whitesmoke;
 }
 
 .navbar-brand{
@@ -16,8 +16,19 @@ a.iframe, a:hover, a:active{
 }
 
 .iconFlex{
+  width:75%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.navbar{
+  flex-wrap: nowrap;
+  padding-left:9%;
+  height:11vh;
+}
+
+.sizeNav{
+  padding:-10px;
 }
