@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\travel;
+use App\Entity\Travel;
 use App\Entity\User;
 use App\Service\CalorieService;
 use Symfony\Component\HttpFoundation\Response;

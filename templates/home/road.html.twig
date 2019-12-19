@@ -5,9 +5,10 @@
 {% block body %}
 
     <div class="d-flex justify-content-center">
-        <div class="mt-5 mb-5" id="map"></div>
+        <div class="mt-5 mb-5" id="mapRoad"></div>
     </div>
     <div class="js-stations" data-stations="{{ stations|json_encode|e('html_attr') }}">
+    <div class="js-travel" data-travel="{{ travel|json_encode|e('html_attr') }}">
     </div>
 
     <nav class="navbar fixed-bottom mt-5">
@@ -73,3 +74,7 @@
 
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('road') }}
+{% endblock %}
