@@ -7,52 +7,59 @@
     <nav class="navbar fixed-bottom">
 
         <a class="navbar-brand" href="#">
-        <div class="iconFlex">
+            <div class="iconFlex">
                 <i class="fas fa-home fa-2x"></i>
-            <div>
-                <p class="titleNav">Accueil</p>
+                <div>
+                    <p class="titleNav">Accueil</p>
+                </div>
             </div>
-        </div></a>
+        </a>
 
         <a class="navbar-brand" href="#">
-        <div class="iconFlex">
+            <div class="iconFlex">
                 <i class="fas fa-euro-sign fa-2x"></i>
-            <div>
-                <p class="titleNav">Tarifs</p>
+                <div>
+                    <p class="titleNav">Tarifs</p>
+                </div>
             </div>
-        </div></a>
+        </a>
 
         <a class="navbar-brand" href="#">
-        <div class="iconFlex">
+            <div class="iconFlex">
                 <i class="fas fa-biking fa-2x"></i>
-            <div>
-                <p class="titleNav">Disponibilités</p>
+                <div>
+                    <p class="titleNav">Disponibilités</p>
+                </div>
             </div>
-        </div></a>
+        </a>
 
-        <a class="navbar-brand" href="#">
-        <div class="iconFlex">
+        <a class="navbar-brand" href="{{ path('user_index') }}">
+            <div class="iconFlex">
                 <i class="fas fa-trophy fa-2x"></i>
-            <div>
-                <p class="titleNav">Rang</p>
+                <div>
+                    <p class="titleNav">Rang</p>
+                </div>
             </div>
-        </div></a>
-
-        <a class="navbar-brand" href="#">
-        <div class="iconFlex">
-                <i class="fas fa-users fa-2x"></i>
-            <div>
-                <p class="titleNav">Profil</p>
-            </div>
-        </div></a>
+        </a>
+        {% if app.user %}
+            <a class="navbar-brand" href="{{ path('app_profile') }}">
+                <div class="iconFlex">
+                    <i class="fas fa-users fa-2x"></i>
+                    <div>
+                        <p class="titleNav">Profil</p>
+                    </div>
+                </div>
+            </a>
+        {% else %}
+            <a class="navbar-brand" href="{{ path('app_login') }}">
+                <div class="iconFlex">
+                    <i class="fas fa-users fa-2x"></i>
+                    <div>
+                        <p class="titleNav">Profil</p>
+                    </div>
+                </div>
+            </a>
+        {% endif %}
 
     </nav>
-    {% if app.user %}
-        {{ app.user.firstname }}
-        <a href="{{ path('app_logout') }}"> Se déconnecter</a>
-        <a href="{{ path('app_profile') }}">Mon profil</a>
-    {% else %}
-        <a href="{{ path('app_login') }}"> Se connecter</a>
-        <a href="{{ path('app_register') }}">Créer un compte</a>
-    {% endif %}
 {% endblock %}
