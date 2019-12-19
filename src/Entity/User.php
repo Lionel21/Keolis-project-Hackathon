@@ -55,6 +55,11 @@ class User implements UserInterface
      */
     private $taille;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $weight;
+
 
 
     public function getId(): ?int
@@ -179,6 +184,18 @@ class User implements UserInterface
     public function setTaille(?int $taille): self
     {
         $this->taille = $taille;
+
+        return $this;
+    }
+
+    public function getWeight(): ?int
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(?int $weight): self
+    {
+        $this->weight = $weight;
 
         return $this;
     }
