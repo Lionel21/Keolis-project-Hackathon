@@ -18,5 +18,12 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "leaflet": "^1.6.0",
+        "leaflet-defaulticon-compatibility": "^0.1.1",
+        "leaflet-gesture-handling": "^1.1.8",
+        "leaflet-routing-machine": "^3.2.12",
+        "leaflet.markercluster": "^1.4.1"
     }
 }
