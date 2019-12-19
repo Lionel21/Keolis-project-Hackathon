@@ -72,8 +72,6 @@ class HomeController extends AbstractController
 
         $stepBefore = (floor(($totalDistance-$_GET['distance']))%10000)*10000;
         $stepAfter = floor($totalDistance%10000)*10000;
-        var_dump($stepBefore, $stepAfter);
-        die();
         $step = $stepAfter - $stepBefore;
 
 
