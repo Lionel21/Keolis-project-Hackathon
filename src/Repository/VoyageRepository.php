@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\travel;
+use App\Entity\Travel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -16,7 +16,7 @@ class VoyageRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, travel::class);
+        parent::__construct($registry, Travel::class);
     }
 
     // /**
