@@ -17,8 +17,10 @@
     {% if app.user %}
         <div class="trajetBilan">
             <h2>Lors de ce voyage : </h2>
-            <p>Vous avez parcourus {{ travel[2] }} mètres.</p>
+            <p>Vous avez parcouru {{ travel[2] }} mètres.</p>
             <p>Vous avez perdu {{ travel[3] }} calories.</p>
+            <p>Et évité l'emission de {{ carboneCar|round(1) }} g de CO2 en ne prenant pas votre voiture.</p>
+            <p>Mais aussi évité l'emission de {{ carboneTruck|round(1) }} g de CO2 en ne prenant pas le bus.</p>
             <h2>Au total : </h2>
             <p>Vous avez parcourus {{ travel[4] }} mètres.</p>
             {% if step >= 1 %}
