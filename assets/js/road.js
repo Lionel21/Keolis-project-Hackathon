@@ -1,5 +1,5 @@
 centerOrleans = [47.90182932, 1.90897107];
-const map = L.map('mapRoad', { gestureHandling: true }).setView(centerOrleans, 14);
+const map = L.map('mapRoad', { gestureHandling: true }).setView(centerOrleans, 12);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 20,
