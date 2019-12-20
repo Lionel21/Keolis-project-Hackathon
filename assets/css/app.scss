@@ -71,6 +71,7 @@ html{
 
 
 }
+
 .h1-appli{
     text-align: center;
     font-size: 36px;
@@ -78,4 +79,12 @@ html{
     letter-spacing: 3px;
     font-weight: 500;
     color: #fefffa;
+    margin-bottom: 0;
+}
+
+.img-appli {
+    //fill: white;
+    height: 100%;
+    filter: invert(100%);
+
 }
