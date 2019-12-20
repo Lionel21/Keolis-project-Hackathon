@@ -3,27 +3,6 @@
 {% block title %}Vélo - Kilo{% endblock %}
 
 {% block body %}
-
-    {% if app.user %}
-        <a class="navbar-brand" href="{{ path('app_profile') }}">
-            <div class="iconFlex">
-                <i class="fas fa-users fa-2x"></i>
-                <div>
-                    <p class="titleNav"> Profil</p>
-                </div>
-            </div>
-        </a>
-    {% else %}
-        <a class="navbar-brand" href="{{ path('app_register') }}">
-            <div class="iconFlex">
-                <i class="fas fa-users fa-2x"></i>
-                <div>
-                    <p class="titleNav"> Créer un compte</p>
-                </div>
-            </div>
-        </a>
-    {% endif %}
-
 <div class="container container-home">
     <h1 class="w-100 text-center h1-historic">Vélo kilo</h1>
 
@@ -36,7 +15,6 @@
     <div class="mb-8 travel">
         {{ include('travel/_form.html.twig') }}
     </div>
-
 
 </div>
 
