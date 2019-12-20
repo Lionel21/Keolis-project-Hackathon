@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rank{% endblock %}
+
+{% block body %}
+
+
+    <div class="page-rank">
+    <div class="resize-page-rank">
+
+        <h1 class="h1-historic">Classement</h1>
+        <div class="row">
+            {% for travel in travels %}
+                <div class="container-rank">
+                    <div class="infos-rank">
+                        <div class="infos-div-rank">
+                            <a class="title-infos-rank">Nom</a>
+                            <a class="result-infos-rank">{{ (travel.user.firstname()) }} </a>
+                        </div>
+                        <div class="infos-div-rank">
+                            <a class="title-infos-rank">Distance</a>
+                            <a class="result-infos-rank">{{ (travel.distance/1000)|round(1) }} km</a>
+                        </div>
+                        <div class="infos-div-rank ">
+                            <a class="title-infos-rank">Dépensé</a>
+                            <a class="result-infos-rank">{{ travel.calory|number_format(1) }} kcal</a></div>
+                        <div class="infos-div-rank ">
+                            <a class="result-infos-rank result-infos-top">{{ loop.index }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

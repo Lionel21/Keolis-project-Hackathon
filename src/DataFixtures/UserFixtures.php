@@ -21,12 +21,11 @@ class UserFixtures extends Fixture
     {
         $faker = Faker\Factory::create('fr_FR');
 
-
         $subscriber = new User();
 
         $subscriber->setEmail('subscriber@monsite.com');
-        $subscriber->setLastname($faker->name);
-        $subscriber->setFirstname($faker->name);
+        $subscriber->setLastname($faker->lastName);
+        $subscriber->setFirstname($faker->firstName);
         $subscriber->setAge($faker->biasedNumberBetween(15, 80));
         $subscriber->setTaille($faker->biasedNumberBetween(120, 220));
         $subscriber->setWeight($faker->biasedNumberBetween(20, 150));
@@ -38,13 +37,13 @@ class UserFixtures extends Fixture
 
         $manager->persist($subscriber);
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 10; $i++) {
 
             $sub = new User();
 
             $sub->setEmail($faker->email);
-            $sub->setLastname($faker->name);
-            $sub->setFirstname($faker->name);
+            $sub->setLastname($faker->lastName);
+            $sub->setFirstname($faker->firstName);
             $sub->setAge($faker->biasedNumberBetween(15, 80));
             $sub->setTaille($faker->biasedNumberBetween(120, 220));
             $sub->setWeight($faker->biasedNumberBetween(20, 150));
@@ -53,6 +52,7 @@ class UserFixtures extends Fixture
                 $sub,
                 'testsub'
             ));
+            $this->addReference('travel_'. $i, $sub);
             $manager->persist($sub);
         }
 
@@ -61,8 +61,8 @@ class UserFixtures extends Fixture
         $admin = new User();
         $admin->setEmail('admin@monsite.com');
         $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setLastname($faker->name);
-        $admin->setFirstname($faker->name);
+        $admin->setLastname($faker->lastName);
+        $admin->setFirstname($faker->firstName);
         $admin->setPassword($this->passwordEncoder->encodePassword(
             $admin,
             'adpsw'
@@ -72,4 +72,5 @@ class UserFixtures extends Fixture
 
         $manager->flush();
     }
+
 }
