@@ -21,6 +21,7 @@ class TravelFixtures extends Fixture implements DependentFixtureInterface
             $travel->setDistance($faker->biasedNumberBetween(500, 20000));
             $travel->setDuration($faker->unixTime (7200 / 60));
             $travel->setCalory($faker->randomNumber($nbDigits = 3, $strict = true));
+            $travel->setDate($faker->dateTime);
 
             $travel->setUser($this->getReference('travel_' . rand(0,9)));
             $manager->persist($travel);
