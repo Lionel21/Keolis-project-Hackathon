@@ -38,7 +38,6 @@ class HomeController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $travel->setDistance($_POST['distance']);
             $travel->setDuration($_POST['time']);
-            $travel->setCalory(100, 100);
             $travel->setUser($this->getUser());
             $calory = $calorieService->calculCalories($travel->getUser()->getWeight(), $travel->getDuration());
             $travel->setCalory($calory);
