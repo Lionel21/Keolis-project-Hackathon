@@ -9,6 +9,7 @@
   font-family: "Titillium Web", sans-serif;
   color: rgba(48, 69, 92, 0.8);
   background-color: #fefffa;
+  margin-bottom: 8vh;
 }
 
 .resize-page-rank{
@@ -27,18 +28,6 @@
   border-bottom: #73be31 solid 1px;
 }
 
-.h1-rank{
-  text-transform: uppercase;
-  font-size: 36px;
-  line-height: 42px;
-  letter-spacing: 3px;
-  font-weight: 500;
-  margin-top:5vh;
-  margin-bottom:5vh;
-  color: #73be31;
-  text-align: center;
-}
-
 .infos-rank{
   display: flex;
   flex-direction: row;
@@ -50,6 +39,7 @@
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content: center;
   margin-left:4vw;
 }
 
@@ -66,4 +56,10 @@
 
 .result-infos-rank{
   font-size:14px;
+  text-align: center;
+  width:8vh;
+}
+
+.result-infos-top{
+  font-size: 30px;
 }
