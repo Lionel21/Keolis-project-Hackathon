@@ -5,7 +5,7 @@
 @import "rank.scss";
 @import "historic.scss";
 @import "login.scss";
-@import "nav.scss";
+
 html{
     background-color: #fefffa;
 }
@@ -51,4 +51,31 @@ html{
 
 .number {
     font-weight: bolder;
+}
+.brand-title{
+    width:15vw;
+}
+
+.title-appli{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #73be31;
+    width: 50%;
+    height: 6vh;
+    margin-left: 25%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    border-bottom-width: 25px;
+
+
+}
+.h1-appli{
+    text-align: center;
+    font-size: 36px;
+    line-height: 42px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: #fefffa;
 }
