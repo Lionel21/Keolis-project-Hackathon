@@ -1,9 +1,11 @@
 nav{
   background-color:whitesmoke;
+  margin: 0;
 }
 
 .navbar-brand{
   color: #73be31;
+  width: 18vw;
 }
 
 a.iframe, a:hover, a:active{
@@ -24,7 +26,7 @@ a.iframe, a:hover, a:active{
 
 .navbar{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: nowrap;
   height:9vh;
   padding-top: 3vh;

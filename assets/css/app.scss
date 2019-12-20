@@ -2,34 +2,47 @@
 @import "profile";
 @import "navbar.scss";
 @import "tarifs.scss";
+@import "rank.scss";
 @import "historic.scss";
 @import "login.scss";
+@import "nav.scss";
+html{
+    background-color: #fefffa;
+}
+
+.container-home{
+    margin: 0;
+}
 
 #map {
     width: 100vw;
-    height: 60vh;
+    height: 50vh;
 }
 
 #mapRoad {
     width: 100vw;
-    height: 60vh;
+    height: 50vh;
 }
 
 .travel {
-    height: 34vh;
-}
-
-h1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 40vh;
+    perspective: 900;
+    font-family: "Titillium Web", sans-serif;
     color: #73be31;
+    background-color: #fefffa;
+    margin-bottom: 8vh;
+    font-size: 28px;
 }
 
 #formHome {
     display: flex;
     flex-direction: column;
-}
-
-#formTravel {
-    background-color: #73be31;
 }
 
 .trajetBilan {

@@ -6,10 +6,12 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use App\Repository\VoyageRepository;
+use App\Service\CalorieService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Services\DistanceService;
 
 /**
  * @Route("/user")
@@ -97,12 +99,19 @@ class UserController extends AbstractController
     /**
      * @Route("/historic/{id}", name="user_historic", methods={"GET"})
      */
-    public function showHistoric(User $user): Response
+    public function showHistoric(User $user, DistanceService $distanceService, VoyageRepository $voyageRepository, CalorieService $calorieService): Response
     {
         $travels = $user->getTravels();
+        $distanceTotal = $distanceService->getDistanceTotal($voyageRepository, $user);
+        $kcalTotal = $calorieService->getKcalTotal($voyageRepository, $user);
+        $timeTotal = $distanceService->getTimeTotal($voyageRepository, $user);
+
         return $this->render('historic/index.html.twig', [
             'user' => $user,
             'travels' => $travels,
+            'distanceTotal' => $distanceTotal,
+            'kcalTotal' => $kcalTotal,
+            'timeTotal' => $timeTotal,
         ]);
     }
 }
