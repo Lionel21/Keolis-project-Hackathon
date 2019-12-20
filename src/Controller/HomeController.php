@@ -75,12 +75,14 @@ class HomeController extends AbstractController
 
         $stepBefore = intval(($totalDistance-$_GET['distance'])/10000);
         $stepAfter = intval($totalDistance/10000);
+        $missing = ($stepAfter+1)*10000 - $totalDistance;
         $step = $stepAfter - $stepBefore;
 
         return $this->render('/home/road.html.twig', [
             'stations' => $stations,
             'travel' => [$_GET['start'], $_GET['finish'], $_GET['distance'], $calories, $totalDistance],
             'step' => $step,
+            'missing' => $missing,
         ]);
     }
 }

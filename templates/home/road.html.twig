@@ -16,14 +16,16 @@
 
     {% if app.user %}
         <div class="trajetBilan">
-            <h2>Lors de ce voyage : </h2>
-            <p>Vous avez parcourus {{ travel[2] }} mètres.</p>
-            <p>Vous avez perdu {{ travel[3] }} calories.</p>
-            <h2>Au total : </h2>
-            <p>Vous avez parcourus {{ travel[4] }} mètres.</p>
+            <h2 class="container-historic">Lors de ce voyage : </h2>
+            <p>Vous avez parcourus <span class="number">{{ travel[2] }}</span> mètres.</p>
+            <p>Vous avez perdu <span class="number">{{ travel[3] }}</span> calories.</p>
+            <h2 class="container-historic">Au total : </h2>
+            <p>Vous avez parcourus <span class="number">{{ travel[4] }}</span> mètres.</p>
             {% if step >= 1 %}
                 <p>Vous avez franchi un palier!</p>
-                <p>10 km parcourus : Prochain voyage gratuit!</p>
+                <p><span class="number">10</span> km parcourus : Prochain voyage gratuit!</p>
+            {% else %}
+                <p>Plus que <span class="number">{{ missing }}</span> mètres avant votre prochain voyage gratuit</p>
             {% endif %}
         </div>
     {% endif %}

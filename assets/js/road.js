@@ -13,21 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const travelList = document.querySelector('.js-travel');
     travel = JSON.parse(travelList.dataset.travel);
 
-    // console.log(travel[0], travel[1]);
-    // const m1 = L.marker([stations[travel[0]][0], stations[travel[0]][1]]);
-    // m1.bindPopup('<p>' + travel[0] + '</p>');
-    // map.addLayer(m1);
-    // const m2 = L.marker([stations[travel[1]][0], stations[travel[1]][1]]);
-    // m2.bindPopup('<p>' + travel[1] + '</p>');
-    // map.addLayer(m2);
-
     const routing = L.Routing.control({
         show: false,
+        language: 'fr',
         waypoints: [
             L.latLng(stations[travel[0]][0], stations[travel[0]][1]),
             L.latLng(stations[travel[1]][0], stations[travel[1]][1])
         ],
-        router: new L.Routing.mapbox('pk.eyJ1Ijoic2Rlc291c2EiLCJhIjoiY2s0YnBsMWN1MDQweTNlbTB6NXRmdHlxeSJ9.MN6NQxtqrcLz0qUDeTD-rg', { profile: 'mapbox/cycling' }),
+        router: new L.Routing.mapbox('pk.eyJ1Ijoic2Rlc291c2EiLCJhIjoiY2s0YnBsMWN1MDQweTNlbTB6NXRmdHlxeSJ9.MN6NQxtqrcLz0qUDeTD-rg', { profile: 'mapbox/cycling', language: 'fr' }),
         createMarker: function (i, wp,) {
             return L.marker([stations[travel[i]][0], stations[travel[i]][1]]).bindPopup('<p>' + travel[i] + '</p>');
         },
