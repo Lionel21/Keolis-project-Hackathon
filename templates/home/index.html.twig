@@ -4,7 +4,6 @@
 
 {% block body %}
 
-
     {% if app.user %}
         <a class="navbar-brand" href="{{ path('app_profile') }}">
             <div class="iconFlex">
@@ -25,19 +24,16 @@
         </a>
     {% endif %}
 
-
-
-    <h1 class="w-100 text-center m-0"> Nom </h1>
-<div class="container">
-    <h1 class="w-100 text-center m-0">Vélo kilo</h1>
+<div class="container container-home">
+    <h1 class="w-100 text-center h1-historic">Vélo kilo</h1>
 
     <div class="d-flex justify-content-center">
-        <div class="mb-5" id="map"></div>
+        <div class="mb-3" id="map"></div>
     </div>
     <div class="js-stations" data-stations="{{ stations|json_encode|e('html_attr') }}">
     </div>
 
-    <div class="mb-5 travel">
+    <div class="mb-8 travel">
         {{ include('travel/_form.html.twig') }}
     </div>
 

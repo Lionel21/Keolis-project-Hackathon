@@ -35,7 +35,6 @@ $primary-color: #73be31;
     border-radius: 50%;
     box-shadow: 0 0 10px #73be31;
 
-
     img {
       width: 100%;
       background: #FFF;
@@ -60,13 +59,13 @@ $primary-color: #73be31;
       font-weight: 400;
       line-height: 1.4;
       color: rgba(48, 69, 92, 0.8);
-      margin-bottom: 1vh;
+      margin-bottom: 0.5vh;
     }
 
     a {
       color: #73be31;
-      font-size: 14px;
-      margin: 0 10px;
+      font-size: 18px;
+      margin: 0 10px ;
       transition: color .3s ease-in-out;
       -webkit-transition: color .3s ease-in-out;
 
@@ -84,6 +83,7 @@ $primary-color: #73be31;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-bottom: 2vh;
   }
 
   p .profile-infos{
@@ -97,4 +97,6 @@ $primary-color: #73be31;
   .profile-container-page{
     padding-bottom: 15vh;
   }
+
+
 }
