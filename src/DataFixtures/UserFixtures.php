@@ -21,7 +21,6 @@ class UserFixtures extends Fixture
     {
         $faker = Faker\Factory::create('fr_FR');
 
-
         $subscriber = new User();
 
         $subscriber->setEmail('subscriber@monsite.com');
