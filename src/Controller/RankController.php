@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\VoyageRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,9 +16,10 @@ class RankController extends AbstractController
     /**
      * @Route("/", name="rank_index")
      */
-    public function index(): Response
+    public function index(VoyageRepository $voyageRepository): Response
     {
         return $this->render('rank/index.html.twig', [
+            'travels' => $voyageRepository->findAll(),
         ]);
     }
 }

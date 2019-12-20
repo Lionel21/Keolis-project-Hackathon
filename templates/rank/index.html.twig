@@ -8,9 +8,10 @@
     <div class="page-rank">
         <div class="resize-page-rank">
             <h1 class="h1-rank">Classement</h1>
+            {% for travel in travels %}
             <div class="container-rank">
                 <div class="infos-div-rank">
-                    <a class="title-infos-rank">Nom</a>
+                    <a class="title-infos-rank">{{ travel.distance }}</a>
                 </div>
                 <div class="infos-div-rank">
                     <a class="title-infos-rank">Prénom</a>
