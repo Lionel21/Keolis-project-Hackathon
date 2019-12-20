@@ -73,10 +73,9 @@ class HomeController extends AbstractController
         $calories = round($calorieService->calculCalories($user->getWeight(), $_GET['duration']));
         $totalDistance = $distanceService->getDistanceTotal($voyageRepository, $user);
 
-        $stepBefore = (floor(($totalDistance-$_GET['distance']))%10000)*10000;
-        $stepAfter = floor($totalDistance%10000)*10000;
+        $stepBefore = intval(($totalDistance-$_GET['distance'])/10000);
+        $stepAfter = intval($totalDistance/10000);
         $step = $stepAfter - $stepBefore;
-
 
         return $this->render('/home/road.html.twig', [
             'stations' => $stations,

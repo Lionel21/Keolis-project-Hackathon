@@ -16,7 +16,22 @@
 }
 
 .travel {
-    height: 40vh;
+    height: 34vh;
 }
 
+h1 {
+    color: #73be31;
+}
 
+#formHome {
+    display: flex;
+    flex-direction: column;
+}
+
+#formTravel {
+    background-color: #73be31;
+}
+
+.trajetBilan {
+    height: 52vh;
+}
