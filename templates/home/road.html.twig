@@ -7,7 +7,7 @@
 <div class="container">
     <h1 class="w-100 text-center m-0"> Trajet effectué </h1>
     <div class="d-flex justify-content-center">
-        <div class="mb-5" id="mapRoad"></div>
+        <div class="mb-2" id="mapRoad"></div>
     </div>
     <div class="js-stations" data-stations="{{ stations|json_encode|e('html_attr') }}">
     </div>
@@ -17,15 +17,16 @@
     {% if app.user %}
         <div class="trajetBilan">
             <h2 class="container-historic">Lors de ce voyage : </h2>
-            <p>Vous avez parcourus <span class="number">{{ travel[2] }}</span> mètres.</p>
+            <p>Vous avez parcouru <span class="number">{{ travel[2] }}</span> mètres.</p>
             <p>Vous avez perdu <span class="number">{{ travel[3] }}</span> calories.</p>
+            <p>Et évité l'émission de <span class="number">{{ carboneCar|round(1) }}</span> g de CO2 en ne prenant pas votre voiture, ou bien <span class="number">{{ carboneTruck|round(1) }}</span> g en ne prenant pas le bus</p>
             <h2 class="container-historic">Au total : </h2>
-            <p>Vous avez parcourus <span class="number">{{ travel[4] }}</span> mètres.</p>
+            <p>Vous avez parcouru <span class="number">{{ travel[4] }}</span> mètres.</p>
             {% if step >= 1 %}
                 <p>Vous avez franchi un palier!</p>
                 <p><span class="number">10</span> km parcourus : Prochain voyage gratuit!</p>
             {% else %}
-                <p>Plus que <span class="number">{{ missing }}</span> mètres avant votre prochain voyage gratuit</p>
+                <p>Plus que <span class="number">{{ missing }}</span> mètres avant votre prochain voyage gratuit!</p>
             {% endif %}
         </div>
     {% endif %}
