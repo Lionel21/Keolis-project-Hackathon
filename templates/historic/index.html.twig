@@ -1,12 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-
-
 <div class="page-historic">
     <div class="resize-page-historic">
-
         <h1 class="h1-historic">Historique</h1>
         <div class="row">
         {% for travel in travels %}
@@ -25,27 +21,27 @@
                 </div>
                 <div class="infos-div-historic ">
                     <a class="title-infos-historic">Date</a>
-                    <a class="result-infos-historic">{{ travel.date|date('H:i')}}</a>
+                    <a class="result-infos-historic">{{ travel.date|date('d/m/y')}}</a>
                 </div>
             </div>
         </div>
         {% endfor %}
-        {#<div class="container-historic">#}
-            {#<div class="infos-historic">DATE</div>#}
-            {#<div class="infos-historic">#}
-                {#<div class="infos-div-historic">#}
-                    {#<a class="title-infos-historic">Distance</a>#}
-                    {#<a class="result-infos-historic">2 Km</a>#}
-                {#</div>#}
-                {#<div class="infos-div-historic">#}
-                    {#<a class="title-infos-historic">Dépensé</a>#}
-                    {#<a class="result-infos-historic">100cal</a></div>#}
-                {#<div class="infos-div-historic">#}
-                    {#<a class="title-infos-historic">Temps</a>#}
-                    {#<a class="result-infos-historic">5 min</a>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
+            <h1 class="h1-historic w-100">Total</h1>
+            <div class="container-historic">
+                <div class="infos-historic mb-5">
+                    <div class="infos-div-historic">
+                        <a class="title-infos-historic">Distance</a>
+                        <a class="result-infos-historic">{{ (distanceTotal/1000)|round(1) }} km</a>
+                    </div>
+                    <div class="infos-div-historic ">
+                        <a class="title-infos-historic">Dépensé</a>
+                        <a class="result-infos-historic">{{ kcalTotal|round(1) }} kcal</a></div>
+                    <div class="infos-div-historic ">
+                        <a class="title-infos-historic">Temps</a>
+                        <a class="result-infos-historic">{{ (timeTotal/60)|round(1) }} min</a>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
 </div>

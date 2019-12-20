@@ -24,8 +24,8 @@ class UserFixtures extends Fixture
         $subscriber = new User();
 
         $subscriber->setEmail('subscriber@monsite.com');
-        $subscriber->setLastname($faker->name);
-        $subscriber->setFirstname($faker->name);
+        $subscriber->setLastname($faker->lastName);
+        $subscriber->setFirstname($faker->firstName);
         $subscriber->setAge($faker->biasedNumberBetween(15, 80));
         $subscriber->setTaille($faker->biasedNumberBetween(120, 220));
         $subscriber->setWeight($faker->biasedNumberBetween(20, 150));
@@ -42,8 +42,8 @@ class UserFixtures extends Fixture
             $sub = new User();
 
             $sub->setEmail($faker->email);
-            $sub->setLastname($faker->name);
-            $sub->setFirstname($faker->name);
+            $sub->setLastname($faker->lastName);
+            $sub->setFirstname($faker->firstName);
             $sub->setAge($faker->biasedNumberBetween(15, 80));
             $sub->setTaille($faker->biasedNumberBetween(120, 220));
             $sub->setWeight($faker->biasedNumberBetween(20, 150));
@@ -61,8 +61,8 @@ class UserFixtures extends Fixture
         $admin = new User();
         $admin->setEmail('admin@monsite.com');
         $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setLastname($faker->name);
-        $admin->setFirstname($faker->name);
+        $admin->setLastname($faker->lastName);
+        $admin->setFirstname($faker->firstName);
         $admin->setPassword($this->passwordEncoder->encodePassword(
             $admin,
             'adpsw'

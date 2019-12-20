@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Entity\Travel;
 use App\Entity\User;
 use App\Repository\VoyageRepository;
+use http\Env\Response;
 
 class DistanceService
 {
@@ -37,5 +38,15 @@ class DistanceService
 
         $angle = atan2(sqrt($a), $b);
         return $angle * $earthRadius;
+    }
+
+    public function getTimeTotal(VoyageRepository $travelRepository, User $user) : float
+    {
+        $travels = $travelRepository->findBy(['user' => $user]);
+        $total = 0;
+        foreach ($travels as $travel) {
+            $total += $travel->getDuration();
+        }
+        return $total;
     }
 }
