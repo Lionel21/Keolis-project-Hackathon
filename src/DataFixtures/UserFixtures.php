@@ -35,7 +35,7 @@ class UserFixtures extends Fixture
 
         $manager->persist($subscriber);
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 10; $i++) {
 
             $sub = new User();
 
@@ -50,8 +50,7 @@ class UserFixtures extends Fixture
                 $sub,
                 'testsub'
             ));
-            $sub->setDistance($this->getReference('travel_' . random_int(0,10)));
-            $this->addReference('sub_'. $i, $sub);
+            $this->addReference('travel_'. $i, $sub);
             $manager->persist($sub);
         }
 
@@ -72,8 +71,4 @@ class UserFixtures extends Fixture
         $manager->flush();
     }
 
-    public function getDependencies()
-    {
-        return [TravelFixtures::class];
-    }
 }
