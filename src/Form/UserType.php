@@ -19,7 +19,7 @@ class UserType extends AbstractType
                 'label' => 'Nom'
             ])
             ->add('firstname', null, [
-                'label' => 'Prenom'
+                'label' => 'Prénom'
             ])
             ->add('age', null, [
                 'label' => 'Age',
@@ -29,7 +29,7 @@ class UserType extends AbstractType
                 'label' => 'Taille(cm)'
             ])
             ->add('weight', null, [
-                'label' => 'Poid(kg)'
+                'label' => 'Poids(kg)'
             ])
         ;
     }

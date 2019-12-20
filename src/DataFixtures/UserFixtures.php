@@ -21,12 +21,14 @@ class UserFixtures extends Fixture
     {
         $faker = Faker\Factory::create('fr_FR');
 
-
         $subscriber = new User();
 
         $subscriber->setEmail('subscriber@monsite.com');
         $subscriber->setLastname($faker->name);
         $subscriber->setFirstname($faker->name);
+        $subscriber->setAge($faker->biasedNumberBetween(15, 80));
+        $subscriber->setTaille($faker->biasedNumberBetween(120, 220));
+        $subscriber->setWeight($faker->biasedNumberBetween(20, 150));
         $subscriber->setRoles(['ROLE_SUBSCRIBER']);
         $subscriber->setPassword($this->passwordEncoder->encodePassword(
             $subscriber,
@@ -35,7 +37,7 @@ class UserFixtures extends Fixture
 
         $manager->persist($subscriber);
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 10; $i++) {
 
             $sub = new User();
 
@@ -50,6 +52,7 @@ class UserFixtures extends Fixture
                 $sub,
                 'testsub'
             ));
+            $this->addReference('travel_'. $i, $sub);
             $manager->persist($sub);
         }
 
@@ -69,4 +72,5 @@ class UserFixtures extends Fixture
 
         $manager->flush();
     }
+
 }

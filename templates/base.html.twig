@@ -18,12 +18,13 @@
     {% endblock %}
         <main>
             {% block body %}{% endblock %}
-        </main>
+
         {% block footer %}
             {% include 'footer.html.twig' %}
         {% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
     </body>
 </html>
