@@ -4,6 +4,7 @@
 
 {% block body %}
 
+<div class="container">
     <h1 class="w-100 text-center m-0"> Trajet effectué </h1>
     <div class="d-flex justify-content-center">
         <div class="mb-5" id="mapRoad"></div>
@@ -14,22 +15,19 @@
     </div>
 
     {% if app.user %}
-        <div>
+        <div class="trajetBilan">
             <h2>Lors de ce voyage : </h2>
             <p>Vous avez parcourus {{ travel[2] }} mètres.</p>
             <p>Vous avez perdu {{ travel[3] }} calories.</p>
-        </div>
-
-        <div class="vh-100">
             <h2>Au total : </h2>
             <p>Vous avez parcourus {{ travel[4] }} mètres.</p>
             {% if step >= 1 %}
                 <p>Vous avez franchi un palier!</p>
                 <p>10 km parcourus : Prochain voyage gratuit!</p>
             {% endif %}
-
         </div>
     {% endif %}
+</div>
 
 {% endblock %}
 

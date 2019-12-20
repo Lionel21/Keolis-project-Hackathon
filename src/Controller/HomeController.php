@@ -38,7 +38,6 @@ class HomeController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $travel->setDistance($_POST['distance']);
             $travel->setDuration($_POST['time']);
-            $travel->setCalory(100, 100);
             $travel->setUser($this->getUser());
             $calory = $calorieService->calculCalories($travel->getUser()->getWeight(), $travel->getDuration());
             $travel->setCalory($calory);
@@ -74,10 +73,9 @@ class HomeController extends AbstractController
         $calories = round($calorieService->calculCalories($user->getWeight(), $_GET['duration']));
         $totalDistance = $distanceService->getDistanceTotal($voyageRepository, $user);
 
-        $stepBefore = (floor(($totalDistance-$_GET['distance']))%10000)*10000;
-        $stepAfter = floor($totalDistance%10000)*10000;
+        $stepBefore = intval(($totalDistance-$_GET['distance'])/10000);
+        $stepAfter = intval($totalDistance/10000);
         $step = $stepAfter - $stepBefore;
-
 
         return $this->render('/home/road.html.twig', [
             'stations' => $stations,

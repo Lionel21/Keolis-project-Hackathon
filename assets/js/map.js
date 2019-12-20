@@ -21,11 +21,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let station2 = stations[document.getElementById("travel_finish").value];
     const change1 = document.getElementById('travel_start');
     const change2 = document.getElementById('travel_finish');
+    let routing;
+
+    const inputDistance = document.createElement("input");
+    inputDistance.setAttribute("type", "hidden");
+    inputDistance.setAttribute("value", 0);
+    inputDistance.setAttribute("name", "distance");
+    document.getElementById("formHome").appendChild(inputDistance);
+    const inputTime = document.createElement("input");
+    inputTime.setAttribute("type", "hidden");
+    inputTime.setAttribute("value", 0);
+    inputTime.setAttribute("name", "time");
+    document.getElementById("formHome").appendChild(inputTime);
+
 
     change1.addEventListener('change', (e) => {
+        if (routing != undefined) routing.setWaypoints([]);
         station1 = stations[document.getElementById("travel_start").value];
-
-        const routing = L.Routing.control({
+        station2 = stations[document.getElementById("travel_finish").value];
+        console.log(station1, station2);
+        routing = L.Routing.control({
             show: false,
             waypoints: [
                 L.latLng(station1[0], station1[1]),
@@ -34,28 +49,24 @@ document.addEventListener('DOMContentLoaded', () => {
             router: new L.Routing.mapbox('pk.eyJ1Ijoic2Rlc291c2EiLCJhIjoiY2s0YnBsMWN1MDQweTNlbTB6NXRmdHlxeSJ9.MN6NQxtqrcLz0qUDeTD-rg', { profile: 'mapbox/cycling' })
         });
         routing.addTo(map);
-
         let totalDistance = routing.on('routesfound', function(e) {
             const distance = e.routes[0].summary.totalDistance;
             const time = e.routes[0].summary.totalTime;
 
-            const inputDistance = document.createElement("input");
-            inputDistance.setAttribute("type", "hidden");
             inputDistance.setAttribute("value", distance);
-            inputDistance.setAttribute("name", "distance");
             document.getElementById("formHome").appendChild(inputDistance);
-            const inputTime = document.createElement("input");
-            inputTime.setAttribute("type", "hidden");
             inputTime.setAttribute("value", time);
-            inputTime.setAttribute("name", "time");
             document.getElementById("formHome").appendChild(inputTime);
         });
     });
 
     change2.addEventListener('change', (e) => {
+        if (routing != undefined) routing.setWaypoints([]);
+        station1 = stations[document.getElementById("travel_start").value];
         station2 = stations[document.getElementById("travel_finish").value];
+        console.log(station1, station2);
 
-        const routing = L.Routing.control({
+        routing = L.Routing.control({
             show: false,
             waypoints: [
                 L.latLng(station1[0], station1[1]),
@@ -64,21 +75,15 @@ document.addEventListener('DOMContentLoaded', () => {
             router: new L.Routing.mapbox('pk.eyJ1Ijoic2Rlc291c2EiLCJhIjoiY2s0YnBsMWN1MDQweTNlbTB6NXRmdHlxeSJ9.MN6NQxtqrcLz0qUDeTD-rg', { profile: 'mapbox/cycling' })
         });
         routing.addTo(map);
-
         let totalDistance = routing.on('routesfound', function(e) {
             const distance = e.routes[0].summary.totalDistance;
             const time = e.routes[0].summary.totalTime;
 
-            const inputDistance = document.createElement("input");
-            inputDistance.setAttribute("type", "hidden");
             inputDistance.setAttribute("value", distance);
-            inputDistance.setAttribute("name", "distance");
             document.getElementById("formHome").appendChild(inputDistance);
-            const inputTime = document.createElement("input");
-            inputTime.setAttribute("type", "hidden");
             inputTime.setAttribute("value", time);
-            inputTime.setAttribute("name", "time");
             document.getElementById("formHome").appendChild(inputTime);
         });
+
     });
 });

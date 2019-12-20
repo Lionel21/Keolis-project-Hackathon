@@ -39,4 +39,11 @@ html{
     font-size: 28px;
 }
 
+#formHome {
+    display: flex;
+    flex-direction: column;
+}
 
+.trajetBilan {
+    height: 52vh;
+}
