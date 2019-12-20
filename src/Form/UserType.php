@@ -16,20 +16,20 @@ class UserType extends AbstractType
 //            ->add('email')
 //            ->add('password')
             ->add('lastname', null, [
-                'label' => false
+                'label' => 'Nom'
             ])
             ->add('firstname', null, [
-                'label' => false
+                'label' => 'Prenom'
             ])
             ->add('age', null, [
-                'label' => false,
+                'label' => 'Age',
 
             ])
             ->add('taille', null, [
-                'label' => false
+                'label' => 'Taille(cm)'
             ])
             ->add('weight', null, [
-                'label' => false
+                'label' => 'Poid(kg)'
             ])
         ;
     }

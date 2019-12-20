@@ -9,6 +9,7 @@
     font-family: "Titillium Web", sans-serif;
     color: rgba(48, 69, 92, 0.8);
     background-color: #fefffa;
+    margin-bottom: 8vh;
 }
 .resize-page-historic{
     display: flex;
@@ -24,9 +25,12 @@
     align-items: center;
     height:15vh;
     border-bottom: #73be31 solid 1px;
+    width: 100%;
+    margin-right: auto;
 }
 
 .h1-historic{
+    text-align: center;
     text-transform: uppercase;
     font-size: 36px;
     line-height: 42px;
@@ -41,21 +45,24 @@
     display: flex;
     flex-direction: row;
     font-size:20px;
-    margin-left:3vw;
 }
 
 .infos-div-historic{
     display:flex;
     flex-direction:column;
     align-items:center;
-    margin-left:4vw;
+    margin-left:2vw;
+    margin-right:2vw;
 }
 
 .title-infos-historic{
-    font-size:18px;
+    font-size:20px;
     margin-bottom:1vh;
+
 }
 
 .result-infos-historic{
     font-size:14px;
 }
+
+

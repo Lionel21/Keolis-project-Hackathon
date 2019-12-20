@@ -28,6 +28,7 @@
     transform: translate(-50%, 0);
     background-color: #fefffa;
     max-width: 450px;
+    margin-bottom: 10vh;
 }
 
 .resize-page-tarif{
@@ -40,7 +41,8 @@
         transform: translate(0, 0);
         max-width: 100%;
         min-height: 100%;
-        margin:0;
+        margin-top:0;
+        margin-bottom:8vh;
         left: 0;
     }
     .resize-page-tarif{

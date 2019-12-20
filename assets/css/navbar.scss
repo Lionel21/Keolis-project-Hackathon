@@ -16,7 +16,6 @@ a.iframe, a:hover, a:active{
 }
 
 .iconFlex{
-  width:75%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -24,6 +23,8 @@ a.iframe, a:hover, a:active{
 }
 
 .navbar{
+  display: flex;
+  justify-content: space-between;
   flex-wrap: nowrap;
   padding-left:7%;
   height:10vh;
@@ -32,4 +33,7 @@ a.iframe, a:hover, a:active{
 
 .sizeNav{
   padding:-10px;
+  height:9vh;
+  padding-top: 3vh;
+
 }

@@ -4,6 +4,7 @@
 @import "tarifs.scss";
 @import "rank.scss";
 @import "historic.scss";
+@import "login.scss";
 
 $font-title : bellotaregular;
 
@@ -31,10 +32,22 @@ $font-title : bellotaregular;
 }
 
 .travel {
-    height: 40vh;
+    height: 34vh;
 }
 
 h1 {
+    color: #73be31;
+}
+
+#formHome {
+    display: flex;
+    flex-direction: column;
+}
+
+#formTravel {
     background-color: #73be31;
-    color: white;
+}
+
+.trajetBilan {
+    height: 52vh;
 }
