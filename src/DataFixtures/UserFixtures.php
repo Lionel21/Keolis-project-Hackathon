@@ -27,6 +27,9 @@ class UserFixtures extends Fixture
         $subscriber->setEmail('subscriber@monsite.com');
         $subscriber->setLastname($faker->name);
         $subscriber->setFirstname($faker->name);
+        $subscriber->setAge($faker->biasedNumberBetween(15, 80));
+        $subscriber->setTaille($faker->biasedNumberBetween(120, 220));
+        $subscriber->setWeight($faker->biasedNumberBetween(20, 150));
         $subscriber->setRoles(['ROLE_SUBSCRIBER']);
         $subscriber->setPassword($this->passwordEncoder->encodePassword(
             $subscriber,
